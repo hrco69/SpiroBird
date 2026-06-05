@@ -78,7 +78,7 @@ docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacij
 | 4 | Controller firmware — mreža (ESP-NOW, Wi-Fi portal, server POST) | ✅ kompilira (PIO, 3 kombinacije zastavica) |
 | 5 | Display firmware (receiver, render igre, UI ekrani) | ✅ kompilira (PIO) |
 | 6 | Backend (Express + dashboard) | ✅ testirano lokalno (svi endpointi) |
-| 7 | Simulacija i testovi (`sim/`) | ⏳ |
+| 7 | Simulacija i testovi (`sim/`) | ✅ 23 unit testa + 5 scenarija — svi prolaze |
 | 8 | Finalna dokumentacija (testing-plan, troubleshooting, case) | ⏳ |
 | 9 | Prezentacija (Marp → PDF, committano u repo) | ⏳ |
 | 10 | Upute za flashanje + priprema za obranu | ⏳ |
