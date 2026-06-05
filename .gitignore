@@ -24,3 +24,6 @@ __pycache__/
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Server runtime data is seeded empty; local test results are not committed
+

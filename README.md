@@ -77,7 +77,7 @@ docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacij
 | 3 | Controller firmware — jezgra (senzor, logika, haptika, NVS) | ✅ kompilira (PIO) |
 | 4 | Controller firmware — mreža (ESP-NOW, Wi-Fi portal, server POST) | ✅ kompilira (PIO, 3 kombinacije zastavica) |
 | 5 | Display firmware (receiver, render igre, UI ekrani) | ✅ kompilira (PIO) |
-| 6 | Backend (Express + dashboard) | ⏳ |
+| 6 | Backend (Express + dashboard) | ✅ testirano lokalno (svi endpointi) |
 | 7 | Simulacija i testovi (`sim/`) | ⏳ |
 | 8 | Finalna dokumentacija (testing-plan, troubleshooting, case) | ⏳ |
 | 9 | Prezentacija (Marp → PDF, committano u repo) | ⏳ |

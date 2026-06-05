@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpiroBird Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🐦 SpiroBird <span>Dashboard</span></h1>
+    <div id="status" class="status">connecting…</div>
+  </header>
+
+  <main>
+    <section class="cards">
+      <div class="card highlight">
+        <h3>🏆 Best volume</h3>
+        <div class="big" id="bestVolume">–</div>
+        <div class="sub" id="bestVolumeSub"></div>
+      </div>
+      <div class="card">
+        <h3>⏱️ Best stable time</h3>
+        <div class="big" id="bestStable">–</div>
+      </div>
+      <div class="card">
+        <h3>💨 Best max flow</h3>
+        <div class="big" id="bestFlow">–</div>
+      </div>
+      <div class="card">
+        <h3>📊 Attempts</h3>
+        <div class="big" id="attempts">–</div>
+        <div class="sub" id="successRate"></div>
+      </div>
+      <div class="card" id="lastCard">
+        <h3>🕐 Last result</h3>
+        <div class="big" id="lastResult">–</div>
+        <div class="sub" id="lastResultSub"></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Attempts <button id="refreshBtn" title="Refresh now">⟳</button></h2>
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>Time</th><th>Device</th><th>Result</th><th>Volume</th>
+            <th>Max flow</th><th>Avg flow</th><th>Stable</th><th>Fail reason</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="empty" class="empty" hidden>No attempts yet — finish an exercise on the device (or POST a test result).</p>
+    </section>
+  </main>
+
+  <footer>
+    SpiroBird — Razvoj ugradbenih sustava · auto-refresh every 3 s
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

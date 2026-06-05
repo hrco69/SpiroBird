@@ -1,0 +1,90 @@
+:root {
+  --bg: #0b1d33;
+  --panel: #122a47;
+  --panel2: #16345a;
+  --text: #e8eef6;
+  --muted: #93a8c4;
+  --green: #38c172;
+  --red: #e3554f;
+  --yellow: #f4ca40;
+  --cyan: #41b9d5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--panel);
+  border-bottom: 2px solid var(--panel2);
+}
+
+h1 { font-size: 1.4rem; }
+h1 span { color: var(--yellow); font-weight: 400; }
+
+.status { font-size: .85rem; color: var(--muted); }
+.status.ok::before  { content: "● "; color: var(--green); }
+.status.err::before { content: "● "; color: var(--red); }
+
+main { flex: 1; padding: 1.2rem 1.5rem; max-width: 1100px; width: 100%; margin: 0 auto; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: .8rem;
+  margin-bottom: 1.6rem;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--panel2);
+  border-radius: 10px;
+  padding: .9rem 1rem;
+}
+
+.card.highlight { border-color: var(--yellow); }
+.card h3 { font-size: .8rem; color: var(--muted); font-weight: 600; margin-bottom: .4rem; }
+.card .big { font-size: 1.6rem; font-weight: 700; }
+.card .sub { font-size: .78rem; color: var(--muted); margin-top: .25rem; }
+
+h2 { font-size: 1.05rem; margin-bottom: .6rem; }
+
+#refreshBtn {
+  background: var(--panel2);
+  color: var(--text);
+  border: 0;
+  border-radius: 6px;
+  padding: .15rem .55rem;
+  cursor: pointer;
+  font-size: .95rem;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th, td { text-align: left; padding: .45rem .6rem; }
+thead th { color: var(--muted); border-bottom: 1px solid var(--panel2); font-weight: 600; }
+tbody tr { border-bottom: 1px solid rgba(255,255,255,.05); }
+tbody tr:hover { background: rgba(255,255,255,.04); }
+
+.ok   { color: var(--green); font-weight: 700; }
+.fail { color: var(--red);   font-weight: 700; }
+
+.empty { color: var(--muted); padding: 1rem 0; }
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: .75rem;
+  padding: .8rem;
+  border-top: 1px solid var(--panel2);
+}
