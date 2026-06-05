@@ -26,10 +26,12 @@
 //   Step 6 (ESP-NOW):               + ESPNOW 1
 // ============================================================================
 
-#define ENABLE_WIFI               1   // captive portal provisioning + reconnect
+// >>> CURRENT PRESET: bring-up STEP 1-2 (standalone + buzzer) <<<
+// Advance flags step by step per docs/testing-plan.md.
+#define ENABLE_WIFI               0   // captive portal provisioning + reconnect
 #define ENABLE_WIFI_MANAGER       1   // 1=tzapu/WiFiManager, 0=built-in fallback portal
-#define ENABLE_SERVER_POST        1   // HTTP POST results to backend after attempts
-#define ENABLE_ESPNOW             1   // broadcast SpiroPacket to Display
+#define ENABLE_SERVER_POST        0   // HTTP POST results to backend after attempts
+#define ENABLE_ESPNOW             0   // broadcast SpiroPacket to Display
 #define ENABLE_OFFLINE_MODE       1   // game works without Wi-Fi/server
 #define ENABLE_BUZZER             1
 #define ENABLE_MOTOR              0   // !! keep 0 until transistor wiring is verified !!
