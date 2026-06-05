@@ -75,7 +75,7 @@ docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacij
 | 1 | Dokumentacija arhitekture (README, wiring, protocol) | ✅ |
 | 2 | Zajednički `protocol.h` | ✅ |
 | 3 | Controller firmware — jezgra (senzor, logika, haptika, NVS) | ✅ kompilira (PIO) |
-| 4 | Controller firmware — mreža (ESP-NOW, Wi-Fi portal, server POST) | ⏳ |
+| 4 | Controller firmware — mreža (ESP-NOW, Wi-Fi portal, server POST) | ✅ kompilira (PIO, 3 kombinacije zastavica) |
 | 5 | Display firmware (receiver, render igre, UI ekrani) | ⏳ |
 | 6 | Backend (Express + dashboard) | ⏳ |
 | 7 | Simulacija i testovi (`sim/`) | ⏳ |

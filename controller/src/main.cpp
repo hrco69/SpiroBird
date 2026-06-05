@@ -148,6 +148,10 @@ static void markActivity(uint32_t nowMs) {
   g_lastActivityMs = nowMs;
 }
 
+#if ENABLE_ESPNOW
+static void buildAndSendPacket(uint32_t nowMs, bool deepSleepPending = false);
+#endif
+
 // ----------------------------------------------------------------------------
 // Deep sleep entry — everything off, wake on the rocker switch (EXT0, LOW)
 // ----------------------------------------------------------------------------
@@ -164,7 +168,7 @@ static void goToDeepSleep() {
 
 #if ENABLE_ESPNOW
   // Final packet so the Display can show its sleep screen (deepSleepPending).
-  espNow.sendFinalSleepPacket();
+  buildAndSendPacket(millis(), /*deepSleepPending=*/true);
   delay(20);   // single tiny wait so the radio flushes the last packet —
                // acceptable: we are about to power down anyway
 #endif
@@ -185,7 +189,7 @@ static void goToDeepSleep() {
 // ESP-NOW live packet (Faza 4 — compiled only with ENABLE_ESPNOW)
 // ----------------------------------------------------------------------------
 #if ENABLE_ESPNOW
-static void buildAndSendPacket(uint32_t nowMs, bool deepSleepPending = false) {
+static void buildAndSendPacket(uint32_t nowMs, bool deepSleepPending) {
   SpiroPacket p = {};
   p.seq             = g_packetSeq++;
   p.timestampMs     = nowMs;
@@ -216,9 +220,22 @@ static void buildAndSendPacket(uint32_t nowMs, bool deepSleepPending = false) {
 #endif
   p.espNowChannel   = espNow.channel();
 
-  spiroPacketFinalize(p);
+  // EspNowSender stamps espNowChannel and finalizes (magic/version/checksum).
   espNow.send(p);
 }
+
+// While the setup portal is open, keep telling the Display about it so it can
+// show "Connect to SpiroBird-Setup / Open 192.168.4.1 / press button to skip".
+#if ENABLE_WIFI
+static void portalTick() {
+  static uint32_t lastMs = 0;
+  uint32_t now = millis();
+  if (now - lastMs >= PORTAL_STATUS_SEND_INTERVAL_MS) {
+    lastMs = now;
+    buildAndSendPacket(now, false);
+  }
+}
+#endif
 #endif
 
 // ----------------------------------------------------------------------------
@@ -356,13 +373,22 @@ void setup() {
   haptics.begin();
   logic.begin(&sensor);
 
+  // ESP-NOW first, so the Display can already be told about the setup portal.
+#if ENABLE_ESPNOW
+  espNow.begin();
+#endif
+
 #if ENABLE_WIFI
   // Blocking is allowed ONLY here, during boot/setup — never during the game.
+#if ENABLE_ESPNOW
+  wifiProv.setPortalTick(portalTick);
+#endif
   wifiProv.begin();
+  g_buttonIsrFlag = false;   // a portal-skip press must not also start the game
 #endif
 
 #if ENABLE_ESPNOW
-  espNow.begin();
+  espNow.syncChannel();      // Wi-Fi may have moved us to its channel
 #endif
 
 #if ENABLE_SERVER_POST
@@ -445,12 +471,17 @@ void loop() {
   }
 #endif
 
-  // ---- 5) Network upkeep (Faza 4: reconnects, queued POSTs) ----------------
+  // ---- 5) Network upkeep (reconnects, queued POSTs) -------------------------
+  // Both are gated so they can never disturb ACTIVE sampling.
+  const bool networkAllowed = logic.state() != STATE_ACTIVE;
 #if ENABLE_WIFI
-  wifiProv.update(now);
+  wifiProv.update(now, networkAllowed);
 #endif
 #if ENABLE_SERVER_POST
-  serverClient.update(now);
+  serverClient.update(now, networkAllowed);
+#endif
+#if !ENABLE_WIFI && !ENABLE_SERVER_POST
+  (void)networkAllowed;
 #endif
 
   // ---- 6) Sleep policy ------------------------------------------------------

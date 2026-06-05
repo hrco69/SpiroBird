@@ -26,10 +26,10 @@
 //   Step 6 (ESP-NOW):               + ESPNOW 1
 // ============================================================================
 
-#define ENABLE_WIFI               0   // Faza 4 — set to 1 when WifiProvisioning lands
-#define ENABLE_WIFI_MANAGER       0   // Faza 4 — tzapu/WiFiManager captive portal
-#define ENABLE_SERVER_POST        0   // Faza 4 — HTTP POST results to backend
-#define ENABLE_ESPNOW             0   // Faza 4 — broadcast SpiroPacket to Display
+#define ENABLE_WIFI               1   // captive portal provisioning + reconnect
+#define ENABLE_WIFI_MANAGER       1   // 1=tzapu/WiFiManager, 0=built-in fallback portal
+#define ENABLE_SERVER_POST        1   // HTTP POST results to backend after attempts
+#define ENABLE_ESPNOW             1   // broadcast SpiroPacket to Display
 #define ENABLE_OFFLINE_MODE       1   // game works without Wi-Fi/server
 #define ENABLE_BUZZER             1
 #define ENABLE_MOTOR              0   // !! keep 0 until transistor wiring is verified !!
@@ -122,15 +122,24 @@
 #define POT_MOVEMENT_WAKE_ADC           150       // raw delta to wake from pseudo sleep
 
 // ============================================================================
-// WI-FI / SERVER (used from Faza 4 on; defined now so config is complete)
+// WI-FI / SERVER
 // ============================================================================
 
 #define WIFI_AP_NAME              "SpiroBird-Setup"
 #define WIFI_CONNECT_TIMEOUT_MS   8000
 #define WIFI_PORTAL_TIMEOUT_SEC   180
+#define WIFI_RECONNECT_INTERVAL_MS 30000UL  // periodic non-blocking reconnect
 #define HTTP_TIMEOUT_MS           1500
 #define SERVER_RESULTS_PATH       "/api/results"
 #define SERVER_HEALTH_PATH        "/health"
+#define SERVER_POST_RETRIES       3
+#define SERVER_RETRY_INTERVAL_MS  5000UL
+
+// ESP-NOW channel when Wi-Fi is disabled/offline (with Wi-Fi connected the
+// active Wi-Fi channel is used automatically — see docs/protocol.md).
+#define ESPNOW_FIXED_CHANNEL      1
+// How often the Display is told about the open setup portal:
+#define PORTAL_STATUS_SEND_INTERVAL_MS 250
 
 // ============================================================================
 // DEBUG MACROS
