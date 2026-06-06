@@ -218,6 +218,13 @@ static void buildAndSendPacket(uint32_t nowMs, bool deepSleepPending) {
   p.maxFlowMlS      = logic.maxFlowMlS();
   p.avgFlowMlS      = logic.avgFlowMlS();
   p.stableTimeMs    = logic.stableTimeMs();
+#if ENABLE_WIFI
+  // During the boot decision phase stableTimeMs is unused by the game, so it
+  // carries the live button-hold time -> the Display draws a hold progress bar.
+  if (wifiProv.status() == WIFI_ST_DECISION) {
+    p.stableTimeMs = (uint16_t)min(wifiProv.decisionHeldMs(), (uint32_t)65535);
+  }
+#endif
   p.state           = (uint8_t)logic.state();
   p.failReason      = (uint8_t)logic.failReason();
   p.targetZone      = sensor.inTargetZone();

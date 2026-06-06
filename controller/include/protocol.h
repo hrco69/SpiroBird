@@ -45,7 +45,12 @@ enum WifiStatus : uint8_t {
   WIFI_ST_CONNECTING = 1,    // trying saved credentials
   WIFI_ST_SETUP_PORTAL = 2,  // AP "SpiroBird-Setup" active -> show portal hint
   WIFI_ST_CONNECTED = 3,
-  WIFI_ST_OFFLINE = 4        // portal timed out / skipped -> "Playing Offline"
+  WIFI_ST_OFFLINE = 4,       // terminal: "Playing Offline" until reboot
+  WIFI_ST_DECISION = 5       // saved Wi-Fi unreachable -> user chooses:
+                             // short press = offline, long press = portal.
+                             // While in this state, packet.stableTimeMs
+                             // carries the current button-hold duration (ms)
+                             // so the Display can draw a hold progress bar.
 };
 
 enum ServerStatus : uint8_t {

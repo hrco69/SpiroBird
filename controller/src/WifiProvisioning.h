@@ -31,7 +31,7 @@ public:
   typedef void (*PortalTickFn)();
   void setPortalTick(PortalTickFn fn) { _portalTick = fn; }
 
-  void begin();   // BOOT ONLY — may block while the portal is open
+  void begin();   // BOOT ONLY — may block while the portal/decision is open
 
   // Non-blocking upkeep: reconnect attempts every WIFI_RECONNECT_INTERVAL_MS.
   // allowReconnect is false during STATE_ACTIVE (never disturb sampling).
@@ -40,7 +40,14 @@ public:
   WifiStatus status() const { return _status; }
   bool isConnected() const;
 
+  // While in WIFI_ST_DECISION: how long the button is currently held (ms).
+  // Broadcast to the Display (in packet.stableTimeMs) for a hold progress bar.
+  uint32_t decisionHeldMs() const { return _decisionHeldMs; }
+
 private:
+  enum Decision : uint8_t { DEC_OFFLINE, DEC_PORTAL };
+
+  Decision runDecisionPhase();
   bool hasSavedCredentials();
   bool tryConnectSaved();
   bool waitForConnection(uint32_t timeoutMs);
@@ -56,6 +63,7 @@ private:
   WifiStatus   _status = WIFI_ST_CONNECTING;
   PortalTickFn _portalTick = nullptr;
   uint32_t     _lastReconnectMs = 0;
+  uint32_t     _decisionHeldMs = 0;
   uint8_t      _retriesLeft = WIFI_RECONNECT_MAX_ATTEMPTS;
 };
 

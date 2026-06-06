@@ -31,6 +31,7 @@ const char *UiScreens::wifiStatusText(uint8_t s) {
     case WIFI_ST_SETUP_PORTAL: return "WiFi: setup mode";
     case WIFI_ST_CONNECTED:    return "WiFi: connected";
     case WIFI_ST_OFFLINE:      return "PLAYING OFFLINE / LOCAL MODE";
+    case WIFI_ST_DECISION:     return "WiFi: choose mode (button)";
   }
   return "WiFi: ?";
 }
@@ -147,6 +148,30 @@ void UiScreens::drawSleep(const SpiroPacket &p) {
   centerText("Controller sleeping", 90, 4, 0x4208);
   centerText("Press wake switch", 124, 4, 0x4208);
   if (p.deepSleepPending) centerText("(deep sleep)", 156, 2, 0x2104);
+}
+
+// Saved Wi-Fi unreachable: the Controller waits for the user's choice.
+// p.stableTimeMs carries the live button-hold time (0..1000 ms) here.
+void UiScreens::drawWifiDecision(const SpiroPacket &p) {
+  titleScreen(COL_BG, "Wi-Fi unavailable", TFT_ORANGE);
+  centerText("Saved network is not reachable.", 52, 2, TFT_SILVER);
+  centerText("SHORT press = play OFFLINE", 84, 2, TFT_WHITE);
+  centerText("LONG press (1 s) = Wi-Fi setup portal", 106, 2, TFT_WHITE);
+  centerText("(no input 60 s = offline)", 128, 2, TFT_SILVER);
+
+  // Hold progress bar: fills while the button is held toward the long press.
+  const int barW = 200, barH = 14;
+  const int barX = (GameRenderer::SCREEN_W - barW) / 2, barY = 160;
+  lgfx::LovyanGFX *g = _r->gfx();
+  g->drawRect(barX, barY, barW, barH, TFT_WHITE);
+  float t = (float)p.stableTimeMs / 1000.0f;   // WIFI_DECISION_LONGPRESS_MS
+  if (t > 1.0f) t = 1.0f;
+  if (t > 0.0f) {
+    g->fillRect(barX + 2, barY + 2, (int)((barW - 4) * t), barH - 4, TFT_CYAN);
+    centerText("keep holding for portal...", 182, 2, TFT_CYAN);
+  } else {
+    centerText("waiting for your choice", 182, 2, TFT_SILVER);
+  }
 }
 
 void UiScreens::drawWifiSetup(const SpiroPacket &p) {

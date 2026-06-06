@@ -143,6 +143,8 @@ static void renderFrame(uint32_t nowMs) {
 
   if (p.wifiStatus == WIFI_ST_SETUP_PORTAL) {
     ui.drawWifiSetup(p);          // portal open on the Controller
+  } else if (p.wifiStatus == WIFI_ST_DECISION) {
+    ui.drawWifiDecision(p);       // offline vs portal choice on the button
   } else {
     switch ((ExerciseState)p.state) {
       case STATE_IDLE:        ui.drawIdle(p);          break;

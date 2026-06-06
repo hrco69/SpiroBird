@@ -141,13 +141,19 @@
 // ============================================================================
 
 #define WIFI_AP_NAME              "SpiroBird-Setup"
-#define WIFI_CONNECT_TIMEOUT_MS   8000
+#define WIFI_CONNECT_TIMEOUT_MS   15000     // boot connect attempt window
 #define WIFI_PORTAL_TIMEOUT_SEC   180
-#define WIFI_RECONNECT_INTERVAL_MS 30000UL  // pause between runtime reconnects
-// Runtime-loss policy: after this many failed reconnects, lock into OFFLINE
-// mode (each reconnect = a full STA channel scan that disrupts ESP-NOW, so
-// they must be bounded — found in HW test as lock/lose loop on the Display).
-#define WIFI_RECONNECT_MAX_ATTEMPTS 2
+
+// Boot decision phase (saved Wi-Fi exists but is unreachable):
+// the user chooses on the wake button, the Display shows the instructions.
+#define WIFI_DECISION_LONGPRESS_MS 1000     // hold this long -> setup portal
+#define WIFI_DECISION_TIMEOUT_SEC  60       // no input -> offline automatically
+
+// Runtime-loss policy: retry for ~30 s total, then lock into OFFLINE mode
+// (each reconnect = a full STA channel scan that disrupts ESP-NOW, so the
+// retries must be bounded — found in HW test as lock/lose loop on Display).
+#define WIFI_RECONNECT_INTERVAL_MS  15000UL // pause between runtime reconnects
+#define WIFI_RECONNECT_MAX_ATTEMPTS 2       // 2 x 15 s = the ~30 s retry window
 #define HTTP_TIMEOUT_MS           1500
 #define SERVER_RESULTS_PATH       "/api/results"
 #define SERVER_HEALTH_PATH        "/health"

@@ -81,16 +81,17 @@ void WifiProvisioning::begin() {
           WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
       return;
     }
-    // Saved network exists but is unreachable right now. Boot decides ONCE,
-    // deterministically: no portal (a transient failure must not cost 180 s)
-    // and no endless background retries (each retry = STA channel scan that
-    // breaks ESP-NOW). Offline mode, fixed channel, rock-solid game.
-    goOffline("saved Wi-Fi unreachable at boot");
-    return;
+    // Saved network exists but is unreachable right now -> ask the user
+    // (instructions appear on the Display): short press = play OFFLINE,
+    // long press = open the setup portal. Timeout -> offline.
+    if (runDecisionPhase() == DEC_OFFLINE) {
+      goOffline("offline chosen (short press or decision timeout)");
+      return;
+    }
+    // DEC_PORTAL falls through to the portal below.
   }
 
-  DBG("[wifi] %s -> starting setup portal '%s'\n",
-      forcePortal ? "portal forced" : "no saved credentials", WIFI_AP_NAME);
+  DBG("[wifi] starting setup portal '%s'\n", WIFI_AP_NAME);
   DBG("[wifi] connect with a phone/laptop and open http://192.168.4.1\n");
   DBG("[wifi] portal exits on: success, %d s timeout, or wake-button skip\n",
       WIFI_PORTAL_TIMEOUT_SEC);
@@ -105,8 +106,65 @@ void WifiProvisioning::begin() {
     _status = WIFI_ST_CONNECTED;
     DBG("[wifi] connected to '%s', IP=%s, channel=%d\n",
         WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
+    return;
   }
-  // else: goOffline() was already called inside the portal routine.
+
+  // Portal closed without success (timeout or button skip). Last chance:
+  // try whatever credentials exist now (maybe an older network came back),
+  // then settle into deterministic offline mode.
+  DBG("[wifi] portal closed without connection\n");
+  if (hasSavedCredentials() && tryConnectSaved()) {
+    _status = WIFI_ST_CONNECTED;
+    DBG("[wifi] connected to '%s' after portal close, IP=%s, channel=%d\n",
+        WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
+    return;
+  }
+  goOffline("portal closed and saved Wi-Fi unreachable");
+}
+
+// Saved Wi-Fi unreachable: wait for the user's choice on the wake button.
+// Short press  -> play offline.
+// Long press   -> open the setup portal (scan for new networks).
+// No input for WIFI_DECISION_TIMEOUT_SEC -> offline (demo never hangs).
+WifiProvisioning::Decision WifiProvisioning::runDecisionPhase() {
+  _status = WIFI_ST_DECISION;
+  _decisionHeldMs = 0;
+  DBG("[wifi] saved Wi-Fi unreachable — choose on the wake button:\n");
+  DBG("[wifi]   SHORT press           -> continue OFFLINE\n");
+  DBG("[wifi]   LONG press (>=%d ms)  -> open setup portal\n", WIFI_DECISION_LONGPRESS_MS);
+  DBG("[wifi]   no input for %d s     -> OFFLINE\n", WIFI_DECISION_TIMEOUT_SEC);
+
+  const uint32_t t0 = millis();
+  uint32_t pressStartMs = 0;
+
+  while (millis() - t0 < (uint32_t)WIFI_DECISION_TIMEOUT_SEC * 1000UL) {
+    const uint32_t now = millis();
+    const bool pressed = (digitalRead(PIN_WAKE_BUTTON) == LOW);
+
+    if (pressed) {
+      if (pressStartMs == 0) pressStartMs = now;
+      _decisionHeldMs = now - pressStartMs;          // Display draws this
+      if (_decisionHeldMs >= WIFI_DECISION_LONGPRESS_MS) {
+        _decisionHeldMs = 0;
+        DBG("[wifi] long press -> setup portal\n");
+        return DEC_PORTAL;
+      }
+    } else if (pressStartMs != 0) {
+      const uint32_t held = now - pressStartMs;
+      pressStartMs = 0;
+      _decisionHeldMs = 0;
+      if (held >= 30) {                              // debounce glitches
+        DBG("[wifi] short press -> OFFLINE\n");
+        return DEC_OFFLINE;
+      }
+    }
+
+    if (_portalTick) _portalTick();   // keep the Display informed (40 Hz)
+    delay(10);                        // boot-only yield
+  }
+
+  DBG("[wifi] decision timeout\n");
+  return DEC_OFFLINE;
 }
 
 // True if a Wi-Fi network was provisioned earlier (survives reboots in NVS).
@@ -176,13 +234,13 @@ void WifiProvisioning::runWiFiManagerPortal() {
     }
     if (millis() - t0 >= (uint32_t)WIFI_PORTAL_TIMEOUT_SEC * 1000UL) {
       wm.stopConfigPortal();
-      goOffline("portal timeout — nobody configured Wi-Fi");
-      return;
+      DBG("[wifi] portal timeout — nobody configured Wi-Fi\n");
+      return;   // begin() retries saved creds once, then goes offline
     }
     if (buttonSkipPressed()) {
       wm.stopConfigPortal();
-      goOffline("portal skipped by wake button");
-      return;
+      DBG("[wifi] portal skipped by wake button\n");
+      return;   // begin() retries saved creds once, then goes offline
     }
     if (_portalTick) _portalTick();   // broadcast WIFI_ST_SETUP_PORTAL packets
     delay(10);                        // boot-only yield
@@ -300,14 +358,16 @@ void WifiProvisioning::runFallbackPortal() {
     if (millis() - t0 >= (uint32_t)WIFI_PORTAL_TIMEOUT_SEC * 1000UL) {
       server.stop();
       dns.stop();
-      goOffline("portal timeout — nobody configured Wi-Fi");
-      return;
+      WiFi.mode(WIFI_STA);
+      DBG("[wifi] portal timeout — nobody configured Wi-Fi\n");
+      return;   // begin() retries saved creds once, then goes offline
     }
     if (buttonSkipPressed()) {
       server.stop();
       dns.stop();
-      goOffline("portal skipped by wake button");
-      return;
+      WiFi.mode(WIFI_STA);
+      DBG("[wifi] portal skipped by wake button\n");
+      return;   // begin() retries saved creds once, then goes offline
     }
     if (_portalTick) _portalTick();
     delay(10);   // boot-only yield

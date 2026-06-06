@@ -28,7 +28,8 @@ public:
   void drawFail(const SpiroPacket &p);
   void drawResult(const SpiroPacket &p);
   void drawSleep(const SpiroPacket &p);
-  void drawWifiSetup(const SpiroPacket &p);   // portal open on Controller
+  void drawWifiSetup(const SpiroPacket &p);    // portal open on Controller
+  void drawWifiDecision(const SpiroPacket &p); // offline vs portal choice
 
   // Overlays
   void drawFakeBanner();                                   // FAKE DATA demo mode
