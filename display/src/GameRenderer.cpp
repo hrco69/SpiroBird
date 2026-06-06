@@ -14,9 +14,23 @@ static const uint16_t COL_BIRD_WING  = 0xFD20;   // orange
 static const uint16_t COL_HUD_BG     = 0x10A2;
 
 void GameRenderer::begin() {
+#if ENABLE_DISPLAY_TOUCH_WAKE
+  // Release the FT6336G reset line before init so I2C probing succeeds.
+  pinMode(TP_PIN_RST, OUTPUT);
+  digitalWrite(TP_PIN_RST, LOW);
+  delay(5);                  // boot-only waits (touch controller reset cycle)
+  digitalWrite(TP_PIN_RST, HIGH);
+  delay(50);
+#endif
+
   _tft.init();
   _tft.setRotation(DISPLAY_ROTATION);   // landscape 320x240
+  _tft.setBrightness(DISPLAY_BRIGHTNESS_FULL);
   _tft.fillScreen(TFT_BLACK);
+#if ENABLE_DISPLAY_TOUCH_WAKE
+  DBG("[gfx] touch (FT6336G) %s\n",
+      _tft.touch() ? "ready" : "NOT detected — wake by game activity only");
+#endif
 
   // Full-screen double buffer at 8-bit depth: 320*240 = 76.8 KB in SRAM.
   _spr.setColorDepth(8);
@@ -48,6 +62,15 @@ void GameRenderer::clear(uint16_t color565) {
 
 void GameRenderer::present() {
   if (_useSprite) _spr.pushSprite(0, 0);
+}
+
+bool GameRenderer::touched() {
+#if ENABLE_DISPLAY_TOUCH_WAKE
+  int32_t x, y;
+  return _tft.getTouch(&x, &y) > 0;
+#else
+  return false;
+#endif
 }
 
 // ----------------------------------------------------------------------------

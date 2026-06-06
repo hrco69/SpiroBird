@@ -39,7 +39,7 @@
 #define ENABLE_MOTOR              1   // transistor circuit wired & verified (korak 3)
 #define MOTOR_BOOT_SELFTEST       1   // single short pulse at boot to confirm wiring
 #define ENABLE_STATUS_LED         1   // onboard WS2812 RGB (neopixelWrite)
-#define ENABLE_SLEEP_MODE         0   // pseudo + deep sleep (enable once core works)
+#define ENABLE_SLEEP_MODE         1   // pseudo sleep 60 s -> deep sleep 3 min
 #define ENABLE_DEBUG_SERIAL       1
 #define ENABLE_SAMPLE_TIMER_ISR   0   // hw-timer ISR sets sample flag (else millis())
 

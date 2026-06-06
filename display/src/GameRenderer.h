@@ -29,6 +29,10 @@ public:
   void resetGame();                                     // new attempt starting
   void present();                                       // push sprite to panel
 
+  // Pseudo-sleep support (radio keeps listening, only the panel sleeps):
+  void setBrightness(uint8_t level) { _tft.setBrightness(level); }
+  bool touched();                                       // any finger on the panel?
+
   // Shared coordinate helpers (UiScreens uses them for zone lines).
   static int flowToY(float flowMlS);
   static const int GAME_TOP    = 26;

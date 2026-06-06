@@ -509,7 +509,14 @@ void loop() {
     logic.update(now);
     handleLogicEvents(now);
 
-    if (sensor.flowDetected()) markActivity(now);
+    // Activity = the knob MOVED, not "flow is nonzero": a knob parked away
+    // from center would otherwise keep the device awake forever and the
+    // sleep timers could never fire.
+    static uint16_t lastActivityRaw = 0;
+    if (abs((int)sensor.rawAdc() - (int)lastActivityRaw) > POT_MOVEMENT_WAKE_ADC) {
+      lastActivityRaw = sensor.rawAdc();
+      markActivity(now);
+    }
   }
 
   // ---- 3) Haptics (non-blocking melodies + motor pulse watchdog) -----------

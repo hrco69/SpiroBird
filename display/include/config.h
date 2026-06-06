@@ -13,9 +13,18 @@
 #define ENABLE_ESPNOW_CHANNEL_SCAN     1   // scan 1-13 until valid packets found
 #define ENABLE_DISPLAY_FAKE_DATA_MODE  1   // demo animation when no Controller
                                            // (bring-up step 5: display standalone)
-#define ENABLE_DISPLAY_PSEUDO_SLEEP    1   // sleep SCREEN only — radio keeps listening
-#define ENABLE_DISPLAY_DEEP_SLEEP      0   // MUST stay 0: ESP-NOW cannot wake a
-                                           // deep-sleeping ESP32 (no wake source)
+#define ENABLE_DISPLAY_PSEUDO_SLEEP    1   // backlight dim/off — radio keeps listening
+#define ENABLE_DISPLAY_TOUCH_WAKE      1   // FT6336G touch wakes the screen
+#define ENABLE_DISPLAY_DEEP_SLEEP      0   // MUST stay 0: deep sleep kills the
+                                           // ESP-NOW receiver (see display_config.h)
+
+// Pseudo-sleep timing: full -> dim after inactivity -> backlight OFF.
+// "Activity" = game states / portal / decision on the Controller, or a touch.
+#define DISPLAY_DIM_AFTER_MS           60000   // 1 min idle -> dim
+#define DISPLAY_OFF_AFTER_DIM_MS       15000   // +15 s dimmed -> backlight off
+#define DISPLAY_BRIGHTNESS_FULL        255
+#define DISPLAY_BRIGHTNESS_DIM         40
+#define TOUCH_POLL_INTERVAL_MS         50
 
 // ============================================================================
 // RENDERING

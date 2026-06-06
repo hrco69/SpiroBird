@@ -22,14 +22,23 @@
 #define LCD_PIN_MISO  13
 #define LCD_PIN_BL    45     // backlight (PWM-dimmable)
 
-// Capacitive touch (FT6336G: SDA=16, SCL=15, RST=18, INT=17) is NOT used in
-// v1 — the Display has no touch functions in this project by design.
+// Capacitive touch FT6336G (I2C). Used ONLY to wake the screen from pseudo
+// sleep — there are no touch menus/controls by design.
+// NOTE: touch INT (GPIO17) is RTC-capable, so deep-sleep wake would be
+// electrically possible — but deep sleep kills the ESP-NOW receiver, so the
+// Display uses PSEUDO sleep only (backlight dim/off, radio keeps listening).
+#define TP_PIN_SDA    16
+#define TP_PIN_SCL    15
+#define TP_PIN_INT    17
+#define TP_PIN_RST    18
+#define TP_I2C_ADDR   0x38   // FT6336G default
 
 // ILI9341V panel, 240x320, 4-wire SPI.
 class LGFX_ES3C28P : public lgfx::LGFX_Device {
   lgfx::Panel_ILI9341 _panel_instance;
   lgfx::Bus_SPI       _bus_instance;
   lgfx::Light_PWM     _light_instance;
+  lgfx::Touch_FT5x06  _touch_instance;   // FT5x06 driver covers the FT6336G
 
 public:
   LGFX_ES3C28P() {
@@ -75,6 +84,21 @@ public:
       cfg.pwm_channel = 7;
       _light_instance.config(cfg);
       _panel_instance.setLight(&_light_instance);
+    }
+    {  // capacitive touch (wake-from-pseudo-sleep only)
+      auto cfg = _touch_instance.config();
+      cfg.i2c_port  = 0;
+      cfg.i2c_addr  = TP_I2C_ADDR;
+      cfg.pin_sda   = TP_PIN_SDA;
+      cfg.pin_scl   = TP_PIN_SCL;
+      cfg.pin_int   = TP_PIN_INT;
+      cfg.freq      = 400000;
+      cfg.x_min = 0; cfg.x_max = 239;
+      cfg.y_min = 0; cfg.y_max = 319;
+      cfg.offset_rotation = 0;
+      cfg.bus_shared = false;   // touch is I2C, LCD is SPI — separate buses
+      _touch_instance.config(cfg);
+      _panel_instance.setTouch(&_touch_instance);
     }
     setPanel(&_panel_instance);
   }

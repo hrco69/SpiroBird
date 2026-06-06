@@ -29,6 +29,12 @@ static uint32_t g_lastFrameMs = 0;
 static uint32_t g_lastDebugMs = 0;
 static uint8_t  g_lastState   = 255;   // to reset bird physics on ACTIVE entry
 
+// Pseudo-sleep power state (the ESP-NOW receiver NEVER sleeps):
+//   ON -> (1 min idle) -> DIM -> (+15 s) -> OFF (backlight 0, touch-sensitive)
+enum DisplayPower : uint8_t { DISP_ON = 0, DISP_DIM = 1, DISP_OFF = 2 };
+static DisplayPower g_power = DISP_ON;
+static uint32_t g_lastUiActivityMs = 0;
+
 // ----------------------------------------------------------------------------
 // Fake-data demo (no Controller needed) — cycles through a whole exercise
 // ----------------------------------------------------------------------------
@@ -191,12 +197,68 @@ void setup() {
   DBG("[boot] setup complete\n");
 }
 
+// Pseudo-sleep policy. Activity = an engaged Controller (anything except
+// IDLE/SLEEP), the fake demo, or a touch. The radio keeps listening in every
+// power state — only the backlight changes.
+static void updateDisplayPower(uint32_t nowMs) {
+#if ENABLE_DISPLAY_PSEUDO_SLEEP
+  bool activity = false;
+
+#if ENABLE_DISPLAY_TOUCH_WAKE
+  static uint32_t lastTouchPollMs = 0;
+  if (nowMs - lastTouchPollMs >= TOUCH_POLL_INTERVAL_MS) {
+    lastTouchPollMs = nowMs;
+    if (renderer.touched()) activity = true;
+  }
+#endif
+
+  if (receiver.isFresh(nowMs)) {
+    SpiroPacket p = receiver.lastPacket();
+    const bool engaged =
+        (p.state >= STATE_CALIBRATING && p.state <= STATE_RESULT) ||
+        p.wifiStatus == WIFI_ST_SETUP_PORTAL ||
+        p.wifiStatus == WIFI_ST_DECISION;
+    if (engaged) activity = true;
+  }
+#if ENABLE_DISPLAY_FAKE_DATA_MODE
+  if (g_fakeActive) activity = true;   // the standalone demo never sleeps
+#endif
+
+  if (activity) {
+    g_lastUiActivityMs = nowMs;
+    if (g_power != DISP_ON) {
+      g_power = DISP_ON;
+      renderer.setBrightness(DISPLAY_BRIGHTNESS_FULL);
+      DBG("[power] wake -> full brightness\n");
+    }
+    return;
+  }
+
+  const uint32_t idle = nowMs - g_lastUiActivityMs;
+  if (g_power == DISP_ON && idle >= DISPLAY_DIM_AFTER_MS) {
+    g_power = DISP_DIM;
+    renderer.setBrightness(DISPLAY_BRIGHTNESS_DIM);
+    DBG("[power] %lu s idle -> DIM\n", (unsigned long)(DISPLAY_DIM_AFTER_MS / 1000));
+  } else if (g_power == DISP_DIM &&
+             idle >= DISPLAY_DIM_AFTER_MS + DISPLAY_OFF_AFTER_DIM_MS) {
+    g_power = DISP_OFF;
+    renderer.setBrightness(0);
+    DBG("[power] backlight OFF (touch to wake, ESP-NOW still listening)\n");
+  }
+#else
+  (void)nowMs;
+#endif
+}
+
 void loop() {
   const uint32_t now = millis();
 
   receiver.update(now);
+  updateDisplayPower(now);
 
-  if (now - g_lastFrameMs >= FRAME_INTERVAL_MS) {
+  // With the backlight off there is nothing to see — skip rendering and let
+  // the loop spin faster on the receiver + touch polling.
+  if (g_power != DISP_OFF && now - g_lastFrameMs >= FRAME_INTERVAL_MS) {
     g_lastFrameMs = now;
     renderFrame(now);
   }
