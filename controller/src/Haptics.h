@@ -21,6 +21,7 @@ public:
 
   // Buzzer (no-ops when ENABLE_BUZZER 0)
   void beep(uint16_t freqHz, uint16_t durationMs);
+  void bootChirp();      // boot-time hardware self-test (3 rising chirps)
   void startBeep();      // short beep when READY
   void zoneBeep();       // positive blip on entering the target zone
   void successMelody();  // longer melody on success

@@ -40,8 +40,9 @@ void BreathSensor::update(uint32_t nowMs) {
       DBG("[sensor] calibration done: offset=%u (expected ~2048), usableDev=%.0f, samples=%u\n",
           _offsetAdc, _usableDeviation, _calCount);
       if (_offsetAdc >= ADC_MAX_USABLE - 300 || _offsetAdc <= ADC_MIN_USABLE + 300) {
-        DBG("[sensor] *** WARNING: offset is at an ADC rail! ***\n");
-        DBG("[sensor] *** Center the potentiometer, then press the button (or RST) to recalibrate. ***\n");
+        // Resting at a rail is a VALID play style (full rotation = full flow
+        // range) — just make sure the user knows flow only works one way now.
+        DBG("[sensor] NOTE: offset is near an ADC rail — flow works in ONE direction only (away from the rail).\n");
       }
     }
     return;

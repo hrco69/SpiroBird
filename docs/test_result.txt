@@ -1,0 +1,524 @@
+--- Terminal on COM14 | 115200 8-N-1
+--- Available filters and text transformations: debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+[dbg] STATE_READY raw=2007 off=2008 dev=   -1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2008 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2007 off=2008 dev=   -1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2008 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=18, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=2007 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2008 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2008 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=2007 (expected ~2048), usableDev=1893, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=2008 off=2007 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2007 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2009 off=2007 dev=    2 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2007 off=2007 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2007 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2007 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2007 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2006 off=2007 dev=   -1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2008 off=2007 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2007 off=2007 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2076 off=2007 dev=   69 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2143 off=2007 dev=  136 flow=  50.7 filt=  46.9 p2p= 46.9 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2152 off=2007 dev=  145 flow=  57.6 filt=  59.6 p2p= 13.3 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2169 off=2007 dev=  162 flow=  70.7 filt=  71.4 p2p= 12.5 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2208 off=2007 dev=  201 flow= 100.6 filt=  97.5 p2p= 25.6 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=2285 off=2007 dev=  278 flow= 159.7 filt= 155.5 p2p= 58.1 vol=   9.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2316 off=2007 dev=  309 flow= 183.5 filt= 183.6 p2p= 27.5 vol=  98.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 183.3 p2p=  1.6 vol= 190.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2316 off=2007 dev=  309 flow= 183.5 filt= 183.2 p2p=  1.1 vol= 281.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2317 off=2007 dev=  310 flow= 184.3 filt= 183.1 p2p=  1.2 vol= 373.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2316 off=2007 dev=  309 flow= 183.5 filt= 183.2 p2p=  1.8 vol= 465.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2317 off=2007 dev=  310 flow= 184.3 filt= 183.5 p2p=  2.0 vol= 556.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 183.1 p2p=  2.1 vol= 648.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 182.8 p2p=  1.5 vol= 739.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 182.9 p2p=  1.3 vol= 831.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2317 off=2007 dev=  310 flow= 184.3 filt= 183.7 p2p=  1.5 vol= 922.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2314 off=2007 dev=  307 flow= 182.0 filt= 183.0 p2p=  1.0 vol=1014.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2317 off=2007 dev=  310 flow= 184.3 filt= 183.1 p2p=  1.4 vol=1105.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2314 off=2007 dev=  307 flow= 182.0 filt= 182.7 p2p=  1.0 vol=1197.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 183.4 p2p=  3.5 vol=1288.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 182.8 p2p=  1.9 vol=1380.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2315 off=2007 dev=  308 flow= 182.8 filt= 182.8 p2p=  1.5 vol=1471.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2319 off=2007 dev=  312 flow= 185.8 filt= 183.7 p2p=  1.1 vol=1563.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2317 off=2007 dev=  310 flow= 184.3 filt= 183.6 p2p=  0.8 vol=1655.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2323 off=2007 dev=  316 flow= 188.9 filt= 187.5 p2p=  4.3 vol=1747.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2337 off=2007 dev=  330 flow= 199.7 filt= 198.5 p2p= 11.0 vol=1845.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2345 off=2007 dev=  338 flow= 205.8 filt= 204.2 p2p=  6.5 vol=1944.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2377 off=2007 dev=  370 flow= 230.4 filt= 228.8 p2p= 23.7 vol=2052.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2421 off=2007 dev=  414 flow= 264.2 filt= 259.8 p2p= 30.5 vol=2174.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2529 off=2007 dev=  522 flow= 347.1 filt= 340.5 p2p= 79.5 vol=2324.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2548 off=2007 dev=  541 flow= 361.7 filt= 359.7 p2p= 18.2 vol=2500.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2593 off=2007 dev=  586 flow= 396.3 filt= 391.0 p2p= 31.1 vol=2687.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2647 off=2007 dev=  640 flow= 437.7 filt= 435.9 p2p= 43.6 vol=2894.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2701 off=2007 dev=  694 flow= 479.2 filt= 476.3 p2p= 40.0 vol=3120.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2740 off=2007 dev=  733 flow= 509.2 filt= 507.5 p2p= 30.0 vol=3367.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2800 off=2007 dev=  793 flow= 555.2 filt= 553.4 p2p= 45.3 vol=3632.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2833 off=2007 dev=  826 flow= 580.6 filt= 578.9 p2p= 25.3 vol=3915.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2891 off=2007 dev=  884 flow= 625.1 filt= 620.7 p2p= 41.5 vol=4214.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2937 off=2007 dev=  930 flow= 660.4 filt= 659.2 p2p= 37.1 vol=4535.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2980 off=2007 dev=  973 flow= 693.5 filt= 695.5 p2p= 36.5 vol=4874.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3019 off=2007 dev= 1012 flow= 723.4 filt= 718.9 p2p= 23.1 vol=5226.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3061 off=2007 dev= 1054 flow= 755.7 filt= 754.4 p2p= 35.0 vol=5595.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3125 off=2007 dev= 1118 flow= 804.8 filt= 798.4 p2p= 43.4 vol=5982.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3179 off=2007 dev= 1172 flow= 846.3 filt= 844.3 p2p= 44.1 vol=6395.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3234 off=2007 dev= 1227 flow= 888.5 filt= 883.5 p2p= 39.0 vol=6826.0 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[dbg] STATE_READY raw=3289 off=3289 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=3290 off=3289 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=3289 off=3289 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=3290 off=3289 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=3290 off=3289 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=3290 off=3289 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=3856 off=3289 dev=  567 flow= 230.5 filt= 186.7 p2p=186.7 vol=   5.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=3289 dev=  611 flow= 250.9 filt= 250.9 p2p= 53.5 vol= 128.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=3289 dev=  611 flow= 250.9 filt= 250.9 p2p=  0.0 vol= 253.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=3289 dev=  611 flow= 250.9 filt= 250.9 p2p=  0.0 vol= 378.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3607 off=3289 dev=  318 flow= 115.0 filt= 162.3 p2p= 88.6 vol= 500.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2977 off=3289 dev= -312 flow= 112.2 filt= 100.2 p2p=146.2 vol= 526.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2652 off=3289 dev= -637 flow= 262.9 filt= 252.1 p2p=148.2 vol= 616.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2428 off=3289 dev= -861 flow= 366.8 filt= 360.4 p2p=106.0 vol= 771.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2225 off=3289 dev=-1064 flow= 460.9 filt= 452.8 p2p= 90.6 vol= 974.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2099 off=3289 dev=-1190 flow= 519.4 filt= 514.8 p2p= 60.2 vol=1217.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1908 off=3289 dev=-1381 flow= 607.9 filt= 596.3 p2p= 80.3 vol=1492.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1566 off=3289 dev=-1723 flow= 766.5 filt= 754.3 p2p=155.2 vol=1829.4 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=18, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=1091 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1092 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1090 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=1090 (expected ~2048), usableDev=2810, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=1225 off=1090 dev=  135 flow=  33.2 filt=  22.6 p2p= 22.6 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=1530 off=1090 dev=  440 flow= 189.1 filt= 175.0 p2p=150.7 vol=  11.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1894 off=1090 dev=  804 flow= 375.0 filt= 363.3 p2p=185.2 vol= 147.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1978 off=1090 dev=  888 flow= 418.0 filt= 417.6 p2p= 51.3 vol= 349.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2002 off=1090 dev=  912 flow= 430.2 filt= 428.6 p2p= 10.8 vol= 561.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2019 off=1090 dev=  929 flow= 438.9 filt= 440.6 p2p= 12.2 vol= 779.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2027 off=1090 dev=  937 flow= 443.0 filt= 442.4 p2p=  1.9 vol= 999.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2039 off=1090 dev=  949 flow= 449.1 filt= 450.0 p2p=  8.2 vol=1223.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2066 off=1090 dev=  976 flow= 462.9 filt= 462.0 p2p= 12.1 vol=1450.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2087 off=1090 dev=  997 flow= 473.6 filt= 474.1 p2p= 11.8 vol=1685.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2121 off=1090 dev= 1031 flow= 491.0 filt= 488.6 p2p= 14.6 vol=1925.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2156 off=1090 dev= 1066 flow= 508.9 filt= 508.8 p2p= 19.6 vol=2176.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2199 off=1090 dev= 1109 flow= 530.9 filt= 528.7 p2p= 19.2 vol=2435.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2247 off=1090 dev= 1157 flow= 555.4 filt= 552.4 p2p= 23.1 vol=2705.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2278 off=1090 dev= 1188 flow= 571.2 filt= 570.2 p2p= 17.2 vol=2986.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2330 off=1090 dev= 1240 flow= 597.8 filt= 595.3 p2p= 24.7 vol=3277.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2372 off=1090 dev= 1282 flow= 619.3 filt= 615.6 p2p= 19.8 vol=3580.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2432 off=1090 dev= 1342 flow= 649.9 filt= 648.3 p2p= 31.9 vol=3896.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2508 off=1090 dev= 1418 flow= 688.8 filt= 686.4 p2p= 37.6 vol=4230.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2551 off=1090 dev= 1461 flow= 710.7 filt= 710.2 p2p= 23.2 vol=4580.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2595 off=1090 dev= 1505 flow= 733.2 filt= 730.2 p2p= 20.0 vol=4940.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2660 off=1090 dev= 1570 flow= 766.4 filt= 762.9 p2p= 32.4 vol=5314.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2732 off=1090 dev= 1642 flow= 803.2 filt= 800.2 p2p= 36.4 vol=5705.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2793 off=1090 dev= 1703 flow= 834.4 filt= 830.3 p2p= 29.1 vol=6112.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2846 off=1090 dev= 1756 flow= 861.5 filt= 858.5 p2p= 27.3 vol=6534.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2915 off=1090 dev= 1825 flow= 896.7 filt= 893.7 p2p= 34.7 vol=6972.1 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[dbg] STATE_CALIBRATING raw=2953 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2955 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=2952 (expected ~2048), usableDev=2752, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=2952 off=2952 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2952 off=2952 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2936 off=2952 dev=  -16 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=2407 off=2952 dev= -545 flow= 247.9 filt= 247.4 p2p=247.4 vol=  72.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1964 off=2952 dev= -988 flow= 479.2 filt= 477.5 p2p=230.0 vol= 252.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1971 off=2952 dev= -981 flow= 475.5 filt= 477.6 p2p=  1.5 vol= 491.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1980 off=2952 dev= -972 flow= 470.8 filt= 470.8 p2p=  7.5 vol= 728.0 stable=   0/5000
+ *  Terminal will be reused by tasks, press any key to close it. 
+
+ *  Executing task in folder controller: C:\Users\hrcsi\.platformio\penv\Scripts\platformio.exe device monitor --environment controller_esp32s3 
+
+--- Terminal on COM14 | 115200 8-N-1
+--- Available filters and text transformations: debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+[dbg] STATE_READY raw=1993 off=1994 dev=   -1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1994 off=1994 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1994 off=1994 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1995 off=1994 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1995 off=1994 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2069 off=1994 dev=   75 flow=   3.8 filt=   1.0 p2p=  1.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2250 off=1994 dev=  256 flow= 141.8 filt= 130.0 p2p=127.9 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=2268 off=1994 dev=  274 flow= 155.6 filt= 155.7 p2p= 24.0 vol=  49.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2273 off=1994 dev=  279 flow= 159.4 filt= 158.4 p2p=  2.9 vol= 127.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2324 off=1994 dev=  330 flow= 198.3 filt= 193.6 p2p= 35.1 vol= 214.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2446 off=1994 dev=  452 flow= 291.3 filt= 278.5 p2p= 82.5 vol= 332.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2577 off=1994 dev=  583 flow= 391.2 filt= 379.1 p2p= 98.3 vol= 497.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2691 off=1994 dev=  697 flow= 478.1 filt= 472.4 p2p= 90.6 vol= 714.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2762 off=1994 dev=  768 flow= 532.2 filt= 526.2 p2p= 53.0 vol= 963.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2776 off=1994 dev=  782 flow= 542.9 filt= 542.9 p2p= 15.8 vol=1233.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2777 off=1994 dev=  783 flow= 543.7 filt= 542.7 p2p=  1.7 vol=1504.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2790 off=1994 dev=  796 flow= 553.6 filt= 550.0 p2p=  8.0 vol=1776.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2832 off=1994 dev=  838 flow= 585.6 filt= 584.6 p2p= 34.2 vol=2062.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2834 off=1994 dev=  840 flow= 587.1 filt= 588.7 p2p=  4.3 vol=2356.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2840 off=1994 dev=  846 flow= 591.7 filt= 591.8 p2p=  3.6 vol=2651.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2841 off=1994 dev=  847 flow= 592.5 filt= 592.0 p2p=  2.0 vol=2946.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2839 off=1994 dev=  845 flow= 591.0 filt= 590.8 p2p=  1.8 vol=3242.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2840 off=1994 dev=  846 flow= 591.7 filt= 591.4 p2p=  1.3 vol=3538.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2839 off=1994 dev=  845 flow= 591.0 filt= 591.4 p2p=  3.7 vol=3833.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2840 off=1994 dev=  846 flow= 591.7 filt= 592.1 p2p=  2.2 vol=4129.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2854 off=1994 dev=  860 flow= 602.4 filt= 603.3 p2p= 12.4 vol=4427.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2883 off=1994 dev=  889 flow= 624.5 filt= 621.5 p2p= 17.6 vol=4733.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2891 off=1994 dev=  897 flow= 630.6 filt= 630.4 p2p=  8.2 vol=5047.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2894 off=1994 dev=  900 flow= 632.9 filt= 633.3 p2p=  4.6 vol=5363.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2905 off=1994 dev=  911 flow= 641.3 filt= 642.1 p2p=  9.0 vol=5682.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2921 off=1994 dev=  927 flow= 653.5 filt= 653.0 p2p= 11.1 vol=6006.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2923 off=1994 dev=  929 flow= 655.0 filt= 656.1 p2p=  3.2 vol=6334.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2921 off=1994 dev=  927 flow= 653.5 filt= 656.1 p2p=  1.5 vol=6662.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2924 off=1994 dev=  930 flow= 655.8 filt= 656.9 p2p=  1.6 vol=6991.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2925 off=1994 dev=  931 flow= 656.5 filt= 656.7 p2p=  1.9 vol=7319.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2928 off=1994 dev=  934 flow= 658.8 filt= 659.5 p2p=  3.9 vol=7648.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2936 off=1994 dev=  942 flow= 664.9 filt= 664.8 p2p=  5.4 vol=7979.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2954 off=1994 dev=  960 flow= 678.6 filt= 677.7 p2p= 12.9 vol=8314.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2963 off=1994 dev=  969 flow= 685.5 filt= 682.2 p2p=  4.6 vol=8654.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2987 off=1994 dev=  993 flow= 703.8 filt= 702.6 p2p= 20.3 vol=9000.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 710.2 p2p=  7.7 vol=9353.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2994 off=1994 dev= 1000 flow= 709.2 filt= 709.9 p2p=  1.5 vol=9708.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2994 off=1994 dev= 1000 flow= 709.2 filt= 709.3 p2p=  1.8 vol=10063.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2994 off=1994 dev= 1000 flow= 709.2 filt= 709.0 p2p=  1.1 vol=10418.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3000 off=1994 dev= 1006 flow= 713.7 filt= 710.7 p2p=  2.0 vol=10773.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 709.4 p2p=  1.9 vol=11127.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 709.8 p2p=  2.0 vol=11482.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 710.1 p2p=  1.4 vol=11837.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 709.3 p2p=  1.6 vol=12192.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 708.7 p2p=  2.0 vol=12547.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 710.0 p2p=  2.8 vol=12902.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 709.7 p2p=  1.9 vol=13256.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 709.1 p2p=  1.9 vol=13611.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2994 off=1994 dev= 1000 flow= 709.2 filt= 709.8 p2p=  1.9 vol=13966.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.2 p2p=  1.5 vol=14321.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.0 p2p=  2.1 vol=14676.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2997 off=1994 dev= 1003 flow= 711.4 filt= 710.0 p2p=  2.2 vol=15031.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 710.6 p2p=  3.0 vol=15386.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2987 off=1994 dev=  993 flow= 703.8 filt= 708.8 p2p=  1.5 vol=15741.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2994 off=1994 dev= 1000 flow= 709.2 filt= 710.0 p2p=  2.0 vol=16095.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 709.8 p2p=  2.2 vol=16450.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 710.1 p2p=  3.4 vol=16805.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.7 p2p=  1.8 vol=17160.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 709.6 p2p=  1.7 vol=17515.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2997 off=1994 dev= 1003 flow= 711.4 filt= 710.6 p2p=  1.3 vol=17870.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2999 off=1994 dev= 1005 flow= 713.0 filt= 711.1 p2p=  1.6 vol=18225.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 709.9 p2p=  2.2 vol=18580.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2992 off=1994 dev=  998 flow= 707.6 filt= 709.0 p2p=  3.5 vol=18935.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2994 off=1994 dev= 1000 flow= 709.2 filt= 710.1 p2p=  1.6 vol=19290.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2997 off=1994 dev= 1003 flow= 711.4 filt= 709.9 p2p=  2.5 vol=19645.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 709.2 p2p=  1.6 vol=20000.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 710.3 p2p=  1.8 vol=20355.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.7 p2p=  1.0 vol=20710.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2998 off=1994 dev= 1004 flow= 712.2 filt= 709.7 p2p=  3.1 vol=21065.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 710.3 p2p=  1.4 vol=21420.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2990 off=1994 dev=  996 flow= 706.1 filt= 708.8 p2p=  3.1 vol=21775.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.5 p2p=  3.1 vol=22130.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.0 p2p=  1.7 vol=22485.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 709.7 p2p=  2.4 vol=22840.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 710.0 p2p=  1.6 vol=23195.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 710.0 p2p=  1.6 vol=23550.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2997 off=1994 dev= 1003 flow= 711.4 filt= 709.7 p2p=  3.6 vol=23905.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1994 dev= 1001 flow= 709.9 filt= 710.4 p2p=  1.7 vol=24260.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 711.1 p2p=  2.0 vol=24615.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2992 off=1994 dev=  998 flow= 707.6 filt= 709.5 p2p=  2.1 vol=24970.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 709.9 p2p=  1.8 vol=25325.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 709.4 p2p=  1.8 vol=25680.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2996 off=1994 dev= 1002 flow= 710.7 filt= 709.9 p2p=  2.1 vol=26035.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2993 off=1994 dev=  999 flow= 708.4 filt= 707.8 p2p=  3.4 vol=26389.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2950 off=1994 dev=  956 flow= 675.6 filt= 680.5 p2p= 29.4 vol=26739.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2925 off=1994 dev=  931 flow= 656.5 filt= 656.3 p2p= 23.7 vol=27073.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2899 off=1994 dev=  905 flow= 636.7 filt= 638.1 p2p= 17.5 vol=27395.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2835 off=1994 dev=  841 flow= 587.9 filt= 588.9 p2p= 48.6 vol=27699.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2802 off=1994 dev=  808 flow= 562.7 filt= 565.5 p2p= 23.1 vol=27987.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2762 off=1994 dev=  768 flow= 532.2 filt= 534.7 p2p= 29.8 vol=28263.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2722 off=1994 dev=  728 flow= 501.7 filt= 507.0 p2p= 27.5 vol=28525.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2655 off=1994 dev=  661 flow= 450.7 filt= 454.8 p2p= 50.7 vol=28765.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2578 off=1994 dev=  584 flow= 391.9 filt= 395.6 p2p= 58.2 vol=28977.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2490 off=1994 dev=  496 flow= 324.8 filt= 329.2 p2p= 65.2 vol=29159.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2433 off=1994 dev=  439 flow= 281.4 filt= 283.5 p2p= 44.8 vol=29310.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2406 off=1994 dev=  412 flow= 260.8 filt= 262.7 p2p= 20.5 vol=29447.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2388 off=1994 dev=  394 flow= 247.1 filt= 247.4 p2p= 14.9 vol=29575.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2346 off=1994 dev=  352 flow= 215.0 filt= 221.1 p2p= 26.0 vol=29694.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2295 off=1994 dev=  301 flow= 176.1 filt= 181.0 p2p= 38.6 vol=29794.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2243 off=1994 dev=  249 flow= 136.5 filt= 143.3 p2p= 36.9 vol=29875.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2140 off=1994 dev=  146 flow=  58.0 filt=  65.0 p2p= 77.1 vol=29927.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2074 off=1994 dev=   80 flow=   7.6 filt=   8.5 p2p= 54.6 vol=29941.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2075 off=1994 dev=   81 flow=   8.4 filt=   7.9 p2p=  1.1 vol=29945.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2007 off=1994 dev=   13 flow=   0.0 filt=   0.1 p2p=  8.9 vol=29948.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1938 off=1994 dev=  -56 flow=   0.0 filt=   0.0 p2p=  0.1 vol=29948.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1940 off=1994 dev=  -54 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29948.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1965 off=1994 dev=  -29 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29948.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1971 off=1994 dev=  -23 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29948.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2040 off=1994 dev=   46 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29948.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2085 off=1994 dev=   91 flow=  16.0 filt=  16.6 p2p= 16.9 vol=29955.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2086 off=1994 dev=   92 flow=  16.8 filt=  16.7 p2p=  1.2 vol=29963.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2071 off=1994 dev=   77 flow=   5.3 filt=   6.8 p2p= 10.2 vol=29970.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2042 off=1994 dev=   48 flow=   0.0 filt=   0.0 p2p=  6.7 vol=29971.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2043 off=1994 dev=   49 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29971.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2041 off=1994 dev=   47 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29971.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2042 off=1994 dev=   48 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29971.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2045 off=1994 dev=   51 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29971.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2044 off=1994 dev=   50 flow=   0.0 filt=   0.0 p2p=  0.0 vol=29971.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2076 off=1994 dev=   82 flow=   9.2 filt=   8.5 p2p=  9.1 vol=29972.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2075 off=1994 dev=   81 flow=   8.4 filt=   8.5 p2p=  2.2 vol=29976.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2075 off=1994 dev=   81 flow=   8.4 filt=   8.1 p2p=  0.8 vol=29981.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2110 off=1994 dev=  116 flow=  35.1 filt=  35.5 p2p= 27.8 vol=29993.6 stable=   0/5000
+[logic] attempt finished: FAIL vol=30000 ml, max=712, avg=500, stable=0 ms, reason=FAIL_TIMEOUT
+[logic] STATE_ACTIVE -> STATE_FAIL
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[dbg] STATE_READY raw=2111 off=2110 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2113 off=2110 dev=    3 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2113 off=2110 dev=    3 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2109 off=2110 dev=   -1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2336 off=2110 dev=  226 flow= 118.7 filt=  69.0 p2p= 69.0 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=19, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=3900 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=3492 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2886 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=3401 (expected ~2048), usableDev=3201, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=2037 off=3401 dev=-1364 flow= 578.6 filt= 556.8 p2p=516.8 vol= 155.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1896 off=3401 dev=-1505 flow= 641.6 filt= 641.7 p2p= 80.0 vol= 467.2 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=19, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw= 518 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1661 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1928 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=1628 (expected ~2048), usableDev=2272, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=1928 off=1628 dev=  300 flow= 146.2 filt= 146.6 p2p=117.7 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1926 off=1628 dev=  298 flow= 145.0 filt= 146.6 p2p=  1.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1928 off=1628 dev=  300 flow= 146.2 filt= 146.1 p2p=  1.2 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1924 off=1628 dev=  296 flow= 143.7 filt= 146.5 p2p=  1.6 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1922 off=1628 dev=  294 flow= 142.4 filt= 145.5 p2p=  1.8 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1928 off=1628 dev=  300 flow= 146.2 filt= 146.6 p2p=  1.3 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1930 off=1628 dev=  302 flow= 147.5 filt= 146.9 p2p=  1.4 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1929 off=1628 dev=  301 flow= 146.9 filt= 146.7 p2p=  1.1 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1928 off=1628 dev=  300 flow= 146.2 filt= 146.7 p2p=  1.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1929 off=1628 dev=  301 flow= 146.9 filt= 147.3 p2p=  0.8 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1929 off=1628 dev=  301 flow= 146.9 filt= 146.9 p2p=  0.8 vol=  0.0 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=19, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=1929 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1928 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1925 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=1928 (expected ~2048), usableDev=1972, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=1929 off=1928 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1941 off=1928 dev=   13 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1964 off=1928 dev=   36 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=1964 off=1928 dev=   36 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2086 off=1928 dev=  158 flow=  64.8 filt=  59.1 p2p= 59.1 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=2272 off=1928 dev=  344 flow= 201.7 filt= 189.3 p2p=128.9 vol=  17.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2544 off=1928 dev=  616 flow= 401.9 filt= 380.9 p2p=188.3 vol= 159.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2748 off=1928 dev=  820 flow= 552.1 filt= 547.3 p2p=161.3 vol= 405.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2995 off=1928 dev= 1067 flow= 733.9 filt= 725.5 p2p=177.1 vol= 724.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3236 off=1928 dev= 1308 flow= 911.3 filt= 896.6 p2p=168.9 vol=1126.1 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=19, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=3315 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=3222 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2264 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=2994 (expected ~2048), usableDev=2794, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=2085 off=2994 dev= -909 flow= 431.2 filt= 414.0 p2p=346.0 vol= 155.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2057 off=2994 dev= -937 flow= 445.6 filt= 449.1 p2p= 31.7 vol= 378.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1720 off=2994 dev=-1274 flow= 618.8 filt= 569.6 p2p=120.9 vol= 612.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1251 off=2994 dev=-1743 flow= 859.8 filt= 859.3 p2p=277.2 vol=1009.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1258 off=2994 dev=-1736 flow= 856.2 filt= 858.8 p2p=  2.1 vol=1439.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1252 off=2994 dev=-1742 flow= 859.3 filt= 860.0 p2p=  1.5 vol=1869.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1227 off=2994 dev=-1767 flow= 872.2 filt= 867.4 p2p=  8.0 vol=2300.1 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM14    Connected!
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=19, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=1083 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1107 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=1106 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=1101 (expected ~2048), usableDev=2799, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=1108 off=1101 dev=    7 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=1671 off=1101 dev=  570 flow= 256.5 filt= 206.4 p2p=206.4 vol=   7.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2222 off=1101 dev= 1121 flow= 539.2 filt= 539.4 p2p=319.8 vol= 233.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2241 off=1101 dev= 1140 flow= 548.9 filt= 545.7 p2p=  6.4 vol= 504.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2251 off=1101 dev= 1150 flow= 554.0 filt= 554.3 p2p=  8.5 vol= 780.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2256 off=1101 dev= 1155 flow= 556.6 filt= 554.8 p2p=  2.3 vol=1057.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2253 off=1101 dev= 1152 flow= 555.1 filt= 553.9 p2p=  1.2 vol=1334.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2252 off=1101 dev= 1151 flow= 554.6 filt= 554.6 p2p=  0.8 vol=1612.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2255 off=1101 dev= 1154 flow= 556.1 filt= 554.5 p2p=  1.1 vol=1889.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2254 off=1101 dev= 1153 flow= 555.6 filt= 554.8 p2p=  0.7 vol=2166.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2250 off=1101 dev= 1149 flow= 553.5 filt= 554.2 p2p=  0.8 vol=2444.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2268 off=1101 dev= 1167 flow= 562.8 filt= 561.5 p2p=  8.2 vol=2721.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2284 off=1101 dev= 1183 flow= 571.0 filt= 570.4 p2p=  8.6 vol=3005.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2333 off=1101 dev= 1232 flow= 596.1 filt= 594.5 p2p= 23.5 vol=3296.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2332 off=1101 dev= 1231 flow= 595.6 filt= 595.9 p2p=  1.9 vol=3594.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2114 off=1101 dev= 1013 flow= 483.8 filt= 491.2 p2p=105.3 vol=3873.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2090 off=1101 dev=  989 flow= 471.5 filt= 471.7 p2p= 18.1 vol=4110.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2042 off=1101 dev=  941 flow= 446.8 filt= 455.5 p2p= 16.5 vol=4345.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1751 off=1101 dev=  650 flow= 297.5 filt= 308.4 p2p=145.0 vol=4535.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1478 off=1101 dev=  377 flow= 157.5 filt= 168.0 p2p=137.6 vol=4655.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1302 off=1101 dev=  201 flow=  67.2 filt=  74.6 p2p= 90.2 vol=4713.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1160 off=1101 dev=   59 flow=   0.0 filt=   2.0 p2p= 70.8 vol=4730.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1061 off=1101 dev=  -40 flow=   0.0 filt=   0.0 p2p=  1.6 vol=4730.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 948 off=1101 dev= -153 flow=  42.6 filt=  39.5 p2p= 39.5 vol=4737.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 943 off=1101 dev= -158 flow=  45.1 filt=  43.9 p2p=  4.1 vol=4759.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 961 off=1101 dev= -140 flow=  35.9 filt=  39.7 p2p=  3.8 vol=4780.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 996 off=1101 dev= -105 flow=  18.0 filt=  18.3 p2p= 20.8 vol=4791.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 995 off=1101 dev= -106 flow=  18.5 filt=  18.5 p2p=  0.8 vol=4801.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1034 off=1101 dev=  -67 flow=   0.0 filt=   7.1 p2p= 11.8 vol=4809.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1069 off=1101 dev=  -32 flow=   0.0 filt=   0.0 p2p=  5.7 vol=4810.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1007 off=1101 dev=  -94 flow=  12.3 filt=   7.5 p2p=  7.5 vol=4810.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  7.9 vol=4818.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.2 p2p=  2.0 vol=4826.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  0.7 vol=4834.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.2 p2p=  0.9 vol=4842.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 998 off=1101 dev= -103 flow=  16.9 filt=  16.1 p2p=  1.3 vol=4850.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.0 p2p=  0.6 vol=4858.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  0.6 vol=4866.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  0.5 vol=4874.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  0.9 vol=4882.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  0.3 vol=4890.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1001 off=1101 dev= -100 flow=  15.4 filt=  16.2 p2p=  0.6 vol=4898.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.3 p2p=  0.6 vol=4907.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  0.7 vol=4915.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  0.4 vol=4923.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  0.5 vol=4931.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.5 p2p=  1.0 vol=4939.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  1.4 vol=4947.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  0.9 vol=4956.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1001 off=1101 dev= -100 flow=  15.4 filt=  15.4 p2p=  1.1 vol=4964.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  1.0 vol=4972.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.9 p2p=  1.1 vol=4980.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.7 p2p=  0.9 vol=4988.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  0.8 vol=4996.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.5 p2p=  0.9 vol=5005.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.3 p2p=  1.2 vol=5013.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.6 p2p=  0.8 vol=5021.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 998 off=1101 dev= -103 flow=  16.9 filt=  16.3 p2p=  1.0 vol=5029.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.4 p2p=  0.8 vol=5037.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 997 off=1101 dev= -104 flow=  17.4 filt=  16.5 p2p=  0.7 vol=5045.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1001 off=1101 dev= -100 flow=  15.4 filt=  15.9 p2p=  0.6 vol=5053.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1001 off=1101 dev= -100 flow=  15.4 filt=  16.1 p2p=  0.6 vol=5061.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.2 p2p=  0.6 vol=5070.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.0 p2p=  0.4 vol=5078.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  1.5 vol=5086.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.1 p2p=  0.4 vol=5094.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.0 p2p=  0.4 vol=5102.2 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.3 p2p=  0.3 vol=5110.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.2 p2p=  0.4 vol=5118.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1000 off=1101 dev= -101 flow=  15.9 filt=  16.2 p2p=  0.3 vol=5126.4 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 999 off=1101 dev= -102 flow=  16.4 filt=  16.0 p2p=  0.4 vol=5134.5 stable=   0/5000

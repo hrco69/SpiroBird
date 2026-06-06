@@ -79,25 +79,37 @@ void Haptics::beep(uint16_t freqHz, uint16_t durationMs) {
   playSequence(s, 1);
 }
 
+// NOTE: bare piezo discs are loudest near their resonance (~2-4 kHz) — tones
+// below ~1 kHz are barely audible. All cues live in the 1.5-3.2 kHz band.
+
+void Haptics::bootChirp() {
+  // Three rising chirps right after begin(): instant hardware self-test.
+  static const ToneStep chirp[] = {
+    {2000, 120}, {0, 60}, {2500, 120}, {0, 60}, {3000, 180},
+  };
+  playSequence(chirp, sizeof(chirp) / sizeof(chirp[0]));
+}
+
 void Haptics::startBeep() {
-  beep(1047 /* C6 */, 80);
+  beep(2200, 150);
 }
 
 void Haptics::zoneBeep() {
-  beep(1568 /* G6 */, 60);
+  beep(2700, 100);
 }
 
 void Haptics::successMelody() {
-  // Rising C-major arpeggio with a held top note.
+  // Rising arpeggio with a held top note, all in the loud piezo band.
   static const ToneStep mel[] = {
-    {1047, 120}, {0, 40}, {1319, 120}, {0, 40}, {1568, 120}, {0, 40}, {2093, 320},
+    {1568, 140}, {0, 40}, {2093, 140}, {0, 40}, {2637, 140}, {0, 40}, {3136, 400},
   };
   playSequence(mel, sizeof(mel) / sizeof(mel[0]));
 }
 
 void Haptics::errorBeep() {
+  // Descending two-tone "wrong" sound.
   static const ToneStep err[] = {
-    {330, 180}, {0, 60}, {220, 320},
+    {2000, 200}, {0, 60}, {1500, 400},
   };
   playSequence(err, sizeof(err) / sizeof(err[0]));
 }

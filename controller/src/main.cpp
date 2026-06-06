@@ -391,6 +391,7 @@ void setup() {
   storage.begin();
   sensor.begin();
   haptics.begin();
+  haptics.bootChirp();   // audible hardware self-test (3 rising chirps)
   logic.begin(&sensor);
 
   // ESP-NOW first, so the Display can already be told about the setup portal.
