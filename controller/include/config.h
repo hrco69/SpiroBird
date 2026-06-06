@@ -26,12 +26,12 @@
 //   Step 6 (ESP-NOW):               + ESPNOW 1
 // ============================================================================
 
-// >>> CURRENT PRESET: bring-up STEP 1-2 (standalone + buzzer) <<<
+// >>> CURRENT PRESET: bring-up STEP 6 (ESP-NOW, no Wi-Fi yet) <<<
 // Advance flags step by step per docs/testing-plan.md.
 #define ENABLE_WIFI               0   // captive portal provisioning + reconnect
 #define ENABLE_WIFI_MANAGER       1   // 1=tzapu/WiFiManager, 0=built-in fallback portal
 #define ENABLE_SERVER_POST        0   // HTTP POST results to backend after attempts
-#define ENABLE_ESPNOW             0   // broadcast SpiroPacket to Display
+#define ENABLE_ESPNOW             1   // broadcast SpiroPacket to Display
 #define ENABLE_OFFLINE_MODE       1   // game works without Wi-Fi/server
 #define ENABLE_BUZZER             0   // buzzer eliminated after HW test (only
                                       // ticks) -> onboard RGB LED is the
