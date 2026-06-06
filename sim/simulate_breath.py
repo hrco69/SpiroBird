@@ -18,14 +18,15 @@ import random
 import sys
 
 from spiro_model import (
-    CALIBRATION_DURATION_MS, SENSOR_SAMPLE_INTERVAL_MS, STABLE_SUCCESS_MS,
+    POT_CENTER_ADC, POT_CENTER_HOLD_MS, SENSOR_SAMPLE_INTERVAL_MS,
+    STABLE_SUCCESS_MS,
     STATE_NAMES, STATE_ACTIVE, STATE_RESULT,
     FAIL_OVER_1200, FAIL_TIMEOUT,
     FLOW_TARGET_MIN_ML_S, FLOW_TARGET_MAX_ML_S,
     BreathSensor, ExerciseLogic, flow_to_adc,
 )
 
-OFFSET = 2048
+OFFSET = POT_CENTER_ADC   # zero-flow point is fixed at 2000 by design
 TICK = SENSOR_SAMPLE_INTERVAL_MS
 PACKET_EVERY_MS = 25            # 40 Hz, like ESPNOW_SEND_INTERVAL_MS
 rng = random.Random(42)         # deterministic runs
@@ -44,8 +45,8 @@ def run_scenario(name, flow_fn, max_ms, attempt_timeout_ms=60000,
     t = 0
     while t < max_ms:
         t += TICK
-        # During calibration the user keeps the knob at rest (as instructed).
-        flow = 0.0 if logic.state != STATE_ACTIVE and t <= CALIBRATION_DURATION_MS + 200 \
+        # During calibration the user keeps the knob centered (as instructed).
+        flow = 0.0 if logic.state != STATE_ACTIVE and t <= POT_CENTER_HOLD_MS + 200 \
             else flow_fn(t)
         noise = rng.uniform(-12, 12)   # a little ADC noise, always
         sensor.update(t, flow_to_adc(max(0.0, flow), OFFSET) + int(noise))

@@ -14,8 +14,12 @@ from dataclasses import dataclass, field
 ADC_MIN_USABLE = 200
 ADC_MAX_USABLE = 3900
 ADC_DEADZONE = 70
-CALIBRATION_DURATION_MS = 1000
 SENSOR_SAMPLE_INTERVAL_MS = 10            # 100 Hz
+
+# Fixed-center calibration (matches config.h after hardware bring-up):
+POT_CENTER_ADC = 2000
+POT_CENTER_TOLERANCE = 300                # accepted zone 1700-2300
+POT_CENTER_HOLD_MS = 2000                 # must stay centered this long
 
 FLOW_MAX_ML_S = 1400.0
 EMA_ALPHA = 0.20
@@ -48,7 +52,7 @@ STATE_NAMES = {
 FAIL_NONE, FAIL_OVER_1200, FAIL_UNSTABLE, FAIL_COLLISION, FAIL_TIMEOUT = 0, 1, 2, 3, 4
 
 
-def flow_to_adc(flow_ml_s: float, offset: int = 2048) -> int:
+def flow_to_adc(flow_ml_s: float, offset: int = POT_CENTER_ADC) -> int:
     """Inverse of the firmware flow mapping — converts a desired flow into the
     raw ADC value a potentiometer would have to produce (positive deviation)."""
     usable_dev = float(max(ADC_MAX_USABLE - offset, offset - ADC_MIN_USABLE))
@@ -70,36 +74,38 @@ class BreathSensor:
         self.usable_deviation = 1.0
         self.calibrated = False
         self.calibrating = False
-        self._cal_end_ms = 0
-        self._cal_sum = 0
-        self._cal_count = 0
+        self._center_hold_start_ms = 0
         self._history: list[float] = []
 
     def start_calibration(self, now_ms: int):
         self.calibrating = True
         self.calibrated = False
-        self._cal_end_ms = now_ms + CALIBRATION_DURATION_MS
-        self._cal_sum = 0
-        self._cal_count = 0
+        self._center_hold_start_ms = 0
 
     def update(self, now_ms: int, adc_value: int):
         # clamp like readAveragedAdc()
         self.raw_adc = max(ADC_MIN_USABLE, min(ADC_MAX_USABLE, int(adc_value)))
 
         if self.calibrating:
-            self._cal_sum += self.raw_adc
-            self._cal_count += 1
-            if now_ms >= self._cal_end_ms and self._cal_count > 0:
-                self.offset_adc = self._cal_sum // self._cal_count
-                up = ADC_MAX_USABLE - self.offset_adc
-                down = self.offset_adc - ADC_MIN_USABLE
-                self.usable_deviation = float(max(up, down))
-                if self.usable_deviation <= ADC_DEADZONE + 1:
-                    self.usable_deviation = ADC_DEADZONE + 100
-                self.calibrating = False
-                self.calibrated = True
-                self.filtered_flow_ml_s = 0.0
-                self._history.clear()
+            # Fixed-center calibration: knob must sit in the center zone
+            # continuously for POT_CENTER_HOLD_MS; offset is then FIXED.
+            in_center = (POT_CENTER_ADC - POT_CENTER_TOLERANCE
+                         <= self.raw_adc
+                         <= POT_CENTER_ADC + POT_CENTER_TOLERANCE)
+            if in_center:
+                if self._center_hold_start_ms == 0:
+                    self._center_hold_start_ms = now_ms
+                if now_ms - self._center_hold_start_ms >= POT_CENTER_HOLD_MS:
+                    self.offset_adc = POT_CENTER_ADC
+                    up = ADC_MAX_USABLE - self.offset_adc
+                    down = self.offset_adc - ADC_MIN_USABLE
+                    self.usable_deviation = float(max(up, down))
+                    self.calibrating = False
+                    self.calibrated = True
+                    self.filtered_flow_ml_s = 0.0
+                    self._history.clear()
+            else:
+                self._center_hold_start_ms = 0
             return
 
         if not self.calibrated:

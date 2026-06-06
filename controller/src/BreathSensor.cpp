@@ -11,38 +11,53 @@ void BreathSensor::begin() {
 void BreathSensor::startCalibration(uint32_t nowMs) {
   _calibrating = true;
   _calibrated  = false;
-  _calEndMs    = nowMs + CALIBRATION_DURATION_MS;
-  _calSum      = 0;
-  _calCount    = 0;
-  DBG("[sensor] calibration started (%d ms) — CENTER the potentiometer and do not touch it\n",
-      CALIBRATION_DURATION_MS);
+  _centerHoldStartMs = 0;
+  _lastHintMs  = nowMs;
+  DBG("[sensor] calibration: set the knob into the center zone %d-%d and hold it for %d ms\n",
+      POT_CENTER_ADC - POT_CENTER_TOLERANCE, POT_CENTER_ADC + POT_CENTER_TOLERANCE,
+      POT_CENTER_HOLD_MS);
 }
 
 void BreathSensor::update(uint32_t nowMs) {
   _rawAdc = readAveragedAdc();
 
   if (_calibrating) {
-    _calSum += _rawAdc;
-    _calCount++;
-    if ((int32_t)(nowMs - _calEndMs) >= 0 && _calCount > 0) {
-      _offsetAdc = (uint16_t)(_calSum / _calCount);
-      // Largest deviation reachable from the calibrated center while staying
-      // inside the usable ADC range — this maps to FLOW_MAX_ML_S.
-      uint16_t up   = ADC_MAX_USABLE - _offsetAdc;
-      uint16_t down = _offsetAdc - ADC_MIN_USABLE;
-      _usableDeviation = (float)max(up, down);
-      if (_usableDeviation <= ADC_DEADZONE + 1) _usableDeviation = ADC_DEADZONE + 100;
+    // Fixed-center calibration: wait until the knob sits inside the center
+    // zone continuously for POT_CENTER_HOLD_MS, then fix offset at the
+    // designed midpoint (no averaging — the midpoint is always the same).
+    const bool inCenter =
+        _rawAdc >= POT_CENTER_ADC - POT_CENTER_TOLERANCE &&
+        _rawAdc <= POT_CENTER_ADC + POT_CENTER_TOLERANCE;
 
-      _calibrating = false;
-      _calibrated  = true;
-      _filteredFlowMlS = 0.0f;
-      resetHistory();
-      DBG("[sensor] calibration done: offset=%u (expected ~2048), usableDev=%.0f, samples=%u\n",
-          _offsetAdc, _usableDeviation, _calCount);
-      if (_offsetAdc >= ADC_MAX_USABLE - 300 || _offsetAdc <= ADC_MIN_USABLE + 300) {
-        // Resting at a rail is a VALID play style (full rotation = full flow
-        // range) — just make sure the user knows flow only works one way now.
-        DBG("[sensor] NOTE: offset is near an ADC rail — flow works in ONE direction only (away from the rail).\n");
+    if (inCenter) {
+      if (_centerHoldStartMs == 0) {
+        _centerHoldStartMs = nowMs;
+        DBG("[sensor] knob centered (raw=%u) — hold still for %d ms...\n",
+            _rawAdc, POT_CENTER_HOLD_MS);
+      }
+      if (nowMs - _centerHoldStartMs >= POT_CENTER_HOLD_MS) {
+        _offsetAdc = POT_CENTER_ADC;   // fixed by design
+        uint16_t up   = ADC_MAX_USABLE - _offsetAdc;
+        uint16_t down = _offsetAdc - ADC_MIN_USABLE;
+        _usableDeviation = (float)max(up, down);
+
+        _calibrating = false;
+        _calibrated  = true;
+        _filteredFlowMlS = 0.0f;
+        resetHistory();
+        DBG("[sensor] calibration done: offset fixed at %u, usableDev=%.0f\n",
+            _offsetAdc, _usableDeviation);
+      }
+    } else {
+      if (_centerHoldStartMs != 0) {
+        DBG("[sensor] knob left the center zone (raw=%u) — re-center and hold again\n",
+            _rawAdc);
+        _centerHoldStartMs = 0;
+      } else if (nowMs - _lastHintMs >= 2000) {
+        _lastHintMs = nowMs;
+        DBG("[sensor] waiting: turn the knob into %d-%d (raw=%u)\n",
+            POT_CENTER_ADC - POT_CENTER_TOLERANCE,
+            POT_CENTER_ADC + POT_CENTER_TOLERANCE, _rawAdc);
       }
     }
     return;

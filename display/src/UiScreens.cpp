@@ -87,10 +87,14 @@ void UiScreens::drawIdle(const SpiroPacket &p) {
 }
 
 void UiScreens::drawCalibrating(const SpiroPacket &p) {
-  (void)p;
   titleScreen(COL_BG, "Calibration", TFT_CYAN);
-  centerText("Do not touch the", 90, 4, TFT_WHITE);
-  centerText("potentiometer...", 118, 4, TFT_WHITE);
+  centerText("CENTER the knob", 84, 4, TFT_WHITE);
+  centerText("and hold it for 2 seconds...", 118, 2, TFT_SILVER);
+  // Live coaching: which way to turn (rawAdc comes in every packet).
+  const int low = 1700, high = 2300;   // POT_CENTER_ADC +/- TOLERANCE
+  if (p.rawAdc < low)       centerText(">>> turn UP <<<",   150, 2, TFT_ORANGE);
+  else if (p.rawAdc > high) centerText(">>> turn DOWN <<<", 150, 2, TFT_ORANGE);
+  else                      centerText("hold it right there!", 150, 2, TFT_GREEN);
 }
 
 void UiScreens::drawReady(const SpiroPacket &p) {

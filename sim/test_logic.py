@@ -14,7 +14,8 @@ import struct
 import unittest
 
 from spiro_model import (
-    ADC_DEADZONE, ADC_MAX_USABLE, CALIBRATION_DURATION_MS, EMA_ALPHA,
+    ADC_DEADZONE, ADC_MAX_USABLE, POT_CENTER_ADC, POT_CENTER_HOLD_MS,
+    EMA_ALPHA,
     FLOW_MAX_ML_S, FLOW_TARGET_MIN_ML_S, FLOW_TARGET_MAX_ML_S,
     HISTORY_LEN, SENSOR_SAMPLE_INTERVAL_MS, STABLE_SUCCESS_MS,
     STATE_ACTIVE, STATE_CALIBRATING, STATE_FAIL, STATE_IDLE, STATE_READY,
@@ -25,7 +26,7 @@ from spiro_model import (
     BreathSensor, ExerciseLogic, flow_to_adc, packet_checksum,
 )
 
-OFFSET = 2048
+OFFSET = POT_CENTER_ADC   # zero-flow point is fixed at 2000 by design
 TICK = SENSOR_SAMPLE_INTERVAL_MS
 
 
@@ -47,7 +48,7 @@ def run_exercise(flow_profile, attempt_timeout_ms=60000):
     logic.request_start(0)
     t = 0
     # generous upper bound so every scenario terminates
-    while t < attempt_timeout_ms + CALIBRATION_DURATION_MS + 20000:
+    while t < attempt_timeout_ms + POT_CENTER_HOLD_MS + 20000:
         t += TICK
         flow = flow_profile(t) if logic.state != STATE_CALIBRATING else 0.0
         sensor.update(t, flow_to_adc(flow, OFFSET))

@@ -3,7 +3,9 @@
 //
 // Responsibilities:
 //  - averaged 12-bit ADC reads, clamped to the usable range (200-3900)
-//  - startup offset calibration (non-blocking, ~1 s averaging at rest)
+//  - fixed-center calibration: waits (non-blocking) until the knob sits in
+//    the POT_CENTER_ADC +/- POT_CENTER_TOLERANCE zone for POT_CENTER_HOLD_MS,
+//    then the zero-flow offset is FIXED at POT_CENTER_ADC
 //  - deadzone + deviation -> flow mapping (0..FLOW_MAX_ML_S)
 //  - EMA low-pass filter
 //  - 500 ms ring buffer of filtered flow for peak-to-peak stability check
@@ -17,7 +19,8 @@ public:
   void begin();
 
   // Non-blocking calibration: call startCalibration(), then keep calling
-  // update() at the sample rate; isCalibrating() turns false when done.
+  // update() at the sample rate; isCalibrating() turns false once the knob
+  // has stayed in the center zone for POT_CENTER_HOLD_MS.
   void startCalibration(uint32_t nowMs);
   bool isCalibrating() const { return _calibrating; }
   bool isCalibrated()  const { return _calibrated; }
@@ -58,7 +61,6 @@ private:
 
   bool     _calibrated  = false;
   bool     _calibrating = false;
-  uint32_t _calEndMs    = 0;
-  uint32_t _calSum      = 0;
-  uint32_t _calCount    = 0;
+  uint32_t _centerHoldStartMs = 0;   // 0 = knob currently outside center zone
+  uint32_t _lastHintMs        = 0;   // rate limit for "move to center" hints
 };

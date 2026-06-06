@@ -68,10 +68,15 @@
 
 #define ADC_MIN_USABLE            200     // ESP32 ADC is nonlinear near the rails
 #define ADC_MAX_USABLE            3900
-#define ADC_DEADZONE              70      // counts around calibrated center -> flow 0
+#define ADC_DEADZONE              70      // counts around the center -> flow 0
 #define ADC_SAMPLES_PER_READ      4       // averaged per update() call
-#define CALIBRATION_DURATION_MS   1000    // averaging window at startup/rest
-// Expected center is ~2048 but it is ALWAYS calibrated, never hardcoded.
+
+// Fixed-center calibration (decided during hardware bring-up): the zero-flow
+// point is ALWAYS POT_CENTER_ADC. "Calibration" = waiting until the user
+// parks the knob inside the center zone and holds it there.
+#define POT_CENTER_ADC            2000    // fixed zero-flow midpoint
+#define POT_CENTER_TOLERANCE      300     // accepted zone: 1700-2300
+#define POT_CENTER_HOLD_MS        2000    // must stay centered this long
 
 // ============================================================================
 // FLOW MAPPING & FILTERING (ml/s)
