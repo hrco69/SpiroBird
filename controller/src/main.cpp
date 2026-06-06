@@ -410,9 +410,10 @@ void setup() {
   // WIFI_PORTAL_TIMEOUT_SEC!), so the non-blocking watchdog in loop() cannot
   // be trusted yet. A 120 ms delay() is acceptable in the boot phase.
   // (HW-test bug: the async pulse stayed ON through the whole Wi-Fi portal.)
-  DBG("[haptics] motor boot self-test pulse (120 ms, synchronous)\n");
+  DBG("[haptics] motor boot self-test pulse (%d ms, synchronous)\n",
+      MOTOR_PULSE_WARN_MS);
   digitalWrite(PIN_MOTOR, HIGH);
-  delay(120);
+  delay(MOTOR_PULSE_WARN_MS);
   digitalWrite(PIN_MOTOR, LOW);
 #endif
   logic.begin(&sensor);

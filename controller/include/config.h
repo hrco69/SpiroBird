@@ -113,13 +113,15 @@
 
 #define BUZZER_LEDC_CHANNEL       0       // used only on Arduino core 2.x API
 
-// Motor safety: 3 V motor on 5 V supply -> SHORT pulses only, hard guards.
+// Motor safety: pulses only, hard guards. Durations tuned on real hardware:
+// the actual motor is a LARGE eccentric-mass vibro — it needs ~300 ms just to
+// spin up, so the original 80-250 ms pulses were barely perceptible.
 #define MOTOR_PWM_DUTY_MAX        90      // of 255 (~35 %) if PWM is ever used
-#define MOTOR_MAX_PULSE_MS        250     // hard upper limit, enforced in update()
-#define MOTOR_COOLDOWN_MS         500     // minimum off-time between pulses
-#define MOTOR_PULSE_WARN_MS       80      // entering danger / leaving zone
-#define MOTOR_PULSE_COLLISION_MS  150
-#define MOTOR_PULSE_FAIL_MS       250
+#define MOTOR_MAX_PULSE_MS        1000    // hard upper limit, enforced in update()
+#define MOTOR_COOLDOWN_MS         400     // minimum off-time between pulses
+#define MOTOR_PULSE_WARN_MS       300     // leaving zone / approaching danger
+#define MOTOR_PULSE_COLLISION_MS  500     // success "win" pulse
+#define MOTOR_PULSE_FAIL_MS       800     // strong fail pulse
 
 // ============================================================================
 // SLEEP / POWER MANAGEMENT (Controller only — Display never deep-sleeps)

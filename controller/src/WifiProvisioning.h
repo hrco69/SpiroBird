@@ -41,6 +41,7 @@ public:
   bool isConnected() const;
 
 private:
+  bool hasSavedCredentials();
   bool tryConnectSaved();
   bool waitForConnection(uint32_t timeoutMs);
   bool buttonSkipPressed();

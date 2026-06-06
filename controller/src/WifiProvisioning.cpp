@@ -39,9 +39,12 @@ bool WifiProvisioning::waitForConnection(uint32_t timeoutMs) {
 
 void WifiProvisioning::goOffline(const char *reason) {
   WiFi.mode(WIFI_STA);   // make sure the setup AP is gone
+  // Park the radio on the fixed channel so the Display's scan is deterministic.
+  esp_wifi_set_channel(ESPNOW_FIXED_CHANNEL, WIFI_SECOND_CHAN_NONE);
   _status = WIFI_ST_OFFLINE;
   DBG("[wifi] %s\n", reason);
-  DBG("[wifi] Wi-Fi unavailable, continuing offline\n");
+  DBG("[wifi] Wi-Fi unavailable, continuing offline (ESP-NOW on channel %d)\n",
+      ESPNOW_FIXED_CHANNEL);
 }
 
 // ----------------------------------------------------------------------------
@@ -53,16 +56,37 @@ void WifiProvisioning::begin() {
   WiFi.mode(WIFI_STA);
   WiFi.setSleep(false);   // keep latency low for ESP-NOW coexistence
 
-  DBG("[wifi] trying saved credentials (timeout %d ms)...\n", WIFI_CONNECT_TIMEOUT_MS);
-  if (tryConnectSaved()) {
-    _status = WIFI_ST_CONNECTED;
-    DBG("[wifi] connected to '%s', IP=%s, channel=%d\n",
-        WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
+  // Holding the wake button during power-up forces the setup portal — the
+  // ONLY way to reach it once credentials exist (see below for why).
+  const bool forcePortal = (digitalRead(PIN_WAKE_BUTTON) == LOW);
+  const bool haveSaved   = hasSavedCredentials();
+  if (forcePortal) DBG("[wifi] wake button held at boot -> forcing setup portal\n");
+
+  if (!forcePortal && haveSaved) {
+    DBG("[wifi] trying saved credentials (timeout %d ms)...\n", WIFI_CONNECT_TIMEOUT_MS);
+    if (tryConnectSaved()) {
+      _status = WIFI_ST_CONNECTED;
+      DBG("[wifi] connected to '%s', IP=%s, channel=%d\n",
+          WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
+      return;
+    }
+    // Saved network exists but is unreachable right now. Do NOT open the
+    // portal (HW-test finding: a transient connect failure used to drop us
+    // into a 180 s portal on channel 1 — from the outside that looked like
+    // "ESP-NOW randomly dead until several controller resets"). Instead:
+    // park the radio on the fixed ESP-NOW channel, start the game, and let
+    // update() retry the connection in the background.
+    esp_wifi_set_channel(ESPNOW_FIXED_CHANNEL, WIFI_SECOND_CHAN_NONE);
+    _status = WIFI_ST_CONNECTING;
+    DBG("[wifi] saved Wi-Fi unreachable -> continuing on ESP-NOW channel %d, "
+        "background reconnect every %lu s\n",
+        ESPNOW_FIXED_CHANNEL, (unsigned long)(WIFI_RECONNECT_INTERVAL_MS / 1000));
+    DBG("[wifi] Wi-Fi unavailable, continuing offline\n");
     return;
   }
 
-  DBG("[wifi] saved credentials failed/missing -> starting setup portal '%s'\n",
-      WIFI_AP_NAME);
+  DBG("[wifi] %s -> starting setup portal '%s'\n",
+      forcePortal ? "portal forced" : "no saved credentials", WIFI_AP_NAME);
   DBG("[wifi] connect with a phone/laptop and open http://192.168.4.1\n");
   DBG("[wifi] portal exits on: success, %d s timeout, or wake-button skip\n",
       WIFI_PORTAL_TIMEOUT_SEC);
@@ -79,6 +103,22 @@ void WifiProvisioning::begin() {
         WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
   }
   // else: goOffline() was already called inside the portal routine.
+}
+
+// True if a Wi-Fi network was provisioned earlier (survives reboots in NVS).
+bool WifiProvisioning::hasSavedCredentials() {
+#if ENABLE_WIFI_MANAGER
+  // WiFiManager persists into the esp-wifi NVS blob.
+  wifi_config_t conf;
+  if (esp_wifi_get_config(WIFI_IF_STA, &conf) != ESP_OK) return false;
+  return conf.sta.ssid[0] != 0;
+#else
+  Preferences prefs;
+  prefs.begin("wifiprov", true);
+  String ssid = prefs.getString("ssid", "");
+  prefs.end();
+  return !ssid.isEmpty();
+#endif
 }
 
 // ----------------------------------------------------------------------------
