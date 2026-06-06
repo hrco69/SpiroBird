@@ -10,7 +10,7 @@
 // ============================================================================
 #pragma once
 #include <Arduino.h>
-#include <TFT_eSPI.h>
+#include "display_config.h"   // LovyanGFX + LGFX_ES3C28P device class
 #include "config.h"
 #include "protocol.h"
 
@@ -20,7 +20,9 @@ public:
 
   // Drawing surface for everyone (UiScreens included): the sprite if it was
   // allocated, otherwise the TFT directly (degraded but functional).
-  TFT_eSPI *gfx() { return _useSprite ? (TFT_eSPI *)&_spr : &_tft; }
+  lgfx::LovyanGFX *gfx() {
+    return _useSprite ? (lgfx::LovyanGFX *)&_spr : (lgfx::LovyanGFX *)&_tft;
+  }
 
   void clear(uint16_t color565);                        // clear the frame buffer
   void drawGame(const SpiroPacket &p, uint32_t nowMs);  // STATE_ACTIVE frame
@@ -42,8 +44,8 @@ private:
   void drawHud(const SpiroPacket &p);
   void drawStabilityBar(const SpiroPacket &p);
 
-  TFT_eSPI    _tft;
-  TFT_eSprite _spr{&_tft};
+  LGFX_ES3C28P      _tft;
+  lgfx::LGFX_Sprite _spr{&_tft};
   bool _useSprite = false;
 
   // Bird physics

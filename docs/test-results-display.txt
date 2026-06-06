@@ -1,0 +1,848 @@
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+=============================Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEGuru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+=============================================Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3c095250  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)
+Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+=============================================Guru Meditation Error: Core  1 panic'ed (StoreProhibited). Exception was unhandled.
+
+Core  1 register dump:
+PC      : 0x42005993  PS      : 0x00060a30  A0      : 0x82005a64  A1      : 0x3fcebe00  
+A2      : 0x00000010  A3      : 0x00000001  A4      : 0x60004000  A5      : 0x0000000b  
+A6      : 0x000000ff  A7      : 0x00000000  A8      : 0x08000000  A9      : 0x3fcebdd0  
+A10     : 0x3fc9f0b8  A11     : 0x00000001  A12     : 0xffffffff  A13     : 0x00000000  
+A14     : 0x00004000  A15     : 0x3fc97da8  SAR     : 0x00000012  EXCCAUSE: 0x0000001d  
+EXCVADDR: 0x00000010  LBEG    : 0x4206b0d8  LEND    : 0x4206b13c  LCOUNT  : 0x00000003  
+
+
+Backtrace: 0x42005990:0x3fcebe00 0x42005a61:0x3fcebe30 0x42002fef:0x3fcebe50 0x42003e61:0x3fcebe70 0x4200b086:0x3fcebe90
+
+
+
+
+ELF file SHA256: d3c86fab1aa5209b
+
+Rebooting...
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0x2b (SPI_FAST_FLASH_BOOT)
+Saved PC:0x4207d1f2
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Display (SLAVE) booting
+==============================================
+[boot] sizeof(SpiroPacket)=48 bytes (must match Controller!)
+[boot] flags: CHANNEL_SCAN=1 FAKE_DATA=1 DEEP_SLEEP=0 (must be 0)

@@ -62,7 +62,7 @@ void GameRenderer::drawGame(const SpiroPacket &p, uint32_t nowMs) {
 }
 
 void GameRenderer::drawBackground(const SpiroPacket &p) {
-  TFT_eSPI *g = gfx();
+  lgfx::LovyanGFX *g = gfx();
   clear(TFT_BLACK);
   // Sky: red-ish when in danger, dark blue otherwise.
   g->fillRect(0, GAME_TOP, SCREEN_W, GAME_BOTTOM - GAME_TOP,
@@ -76,7 +76,7 @@ void GameRenderer::drawBackground(const SpiroPacket &p) {
 }
 
 void GameRenderer::drawZones(const SpiroPacket &p) {
-  TFT_eSPI *g = gfx();
+  lgfx::LovyanGFX *g = gfx();
   const int yLow = flowToY(FLOW_LINE_LOW_ML_S);
   const int yMin = flowToY(FLOW_TARGET_MIN_ML_S);
   const int yMax = flowToY(FLOW_TARGET_MAX_ML_S);
@@ -99,7 +99,7 @@ void GameRenderer::drawZones(const SpiroPacket &p) {
 }
 
 void GameRenderer::drawPipes() {
-  TFT_eSPI *g = gfx();
+  lgfx::LovyanGFX *g = gfx();
   _pipeScroll += PIPE_SPEED_PX;
   if (_pipeScroll >= PIPE_SPACING_PX) _pipeScroll -= PIPE_SPACING_PX;
 
@@ -118,7 +118,7 @@ void GameRenderer::drawPipes() {
 }
 
 void GameRenderer::drawBird(const SpiroPacket &p, uint32_t nowMs) {
-  TFT_eSPI *g = gfx();
+  lgfx::LovyanGFX *g = gfx();
 
   // Inertia: the bird chases the Y that corresponds to the filtered flow.
   const float targetY = (float)flowToY(p.filteredFlowMlS);
@@ -142,7 +142,7 @@ void GameRenderer::drawBird(const SpiroPacket &p, uint32_t nowMs) {
 }
 
 void GameRenderer::drawStabilityBar(const SpiroPacket &p) {
-  TFT_eSPI *g = gfx();
+  lgfx::LovyanGFX *g = gfx();
   // Right-edge coach bar: fills bottom-up with the 0-5 s stable timer.
   const int barX = SCREEN_W - 10, barY = GAME_TOP + 4;
   const int barH = GAME_BOTTOM - GAME_TOP - 8, barW = 7;
@@ -156,7 +156,7 @@ void GameRenderer::drawStabilityBar(const SpiroPacket &p) {
 }
 
 void GameRenderer::drawHud(const SpiroPacket &p) {
-  TFT_eSPI *g = gfx();
+  lgfx::LovyanGFX *g = gfx();
 
   // ---- top bar: big flow + volume ----
   g->fillRect(0, 0, SCREEN_W, GAME_TOP, COL_HUD_BG);

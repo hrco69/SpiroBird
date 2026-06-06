@@ -33,7 +33,9 @@
 #define ENABLE_SERVER_POST        0   // HTTP POST results to backend after attempts
 #define ENABLE_ESPNOW             0   // broadcast SpiroPacket to Display
 #define ENABLE_OFFLINE_MODE       1   // game works without Wi-Fi/server
-#define ENABLE_BUZZER             1
+#define ENABLE_BUZZER             0   // buzzer eliminated after HW test (only
+                                      // ticks) -> onboard RGB LED is the
+                                      // primary feedback channel
 #define ENABLE_MOTOR              0   // !! keep 0 until transistor wiring is verified !!
 #define ENABLE_STATUS_LED         1   // onboard WS2812 RGB (neopixelWrite)
 #define ENABLE_SLEEP_MODE         0   // pseudo + deep sleep (enable once core works)

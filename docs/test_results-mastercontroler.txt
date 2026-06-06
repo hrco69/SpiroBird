@@ -1,0 +1,789 @@
+--- Terminal on COM13 | 115200 8-N-1
+--- Available filters and text transformations: debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=2668 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=22, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (LEDC)
+[haptics] motor DISABLED (enable only after transistor wiring is verified)
+[boot] setup complete, entering main loop
+[sensor] calibration started (1000 ms) — CENTER the potentiometer and do not touch it
+[logic] STATE_IDLE -> STATE_CALIBRATING
+[main] calibrating — keep the potentiometer at rest
+[dbg] STATE_CALIBRATING raw=2667 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2669 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[dbg] STATE_CALIBRATING raw=2668 off=   0 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0vol=    0.0 stable=   0/5000
+[sensor] calibration done: offset=2667 (expected ~2048), usableDev=2467, samples=98
+[logic] STATE_CALIBRATING -> STATE_READY
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2668 off=2667 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2668 off=2667 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2667 off=2667 dev=    0 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2671 off=2667 dev=    4 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2672 off=2667 dev=    5 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2676 off=2667 dev=    9 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2666 off=2667 dev=   -1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2678 off=2667 dev=   11 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2918 off=2667 dev=  251 flow= 105.7 filt=  85.9 p2p= 85.9 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=3278 off=2667 dev=  611 flow= 316.0 filt= 308.0 p2p=217.3 vol=  85.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3285 off=2667 dev=  618 flow= 320.1 filt= 319.8 p2p= 10.1 vol= 244.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3247 off=2667 dev=  580 flow= 297.9 filt= 311.1 p2p=  9.0 vol= 404.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2491 off=2667 dev= -176 flow=  61.9 filt=  40.7 p2p=302.1 vol= 469.3 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2155 off=2667 dev= -512 flow= 258.2 filt= 258.1 p2p=210.6 vol= 566.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2047 off=2667 dev= -620 flow= 321.2 filt= 299.5 p2p= 41.6 vol= 698.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1903 off=2667 dev= -764 flow= 405.3 filt= 404.9 p2p=100.1 vol= 890.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2251 off=2667 dev= -416 flow= 202.1 filt= 239.9 p2p=165.1 vol=1071.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2954 off=2667 dev=  287 flow= 126.7 filt=  99.4 p2p=226.7 vol=1111.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3727 off=2667 dev= 1060 flow= 578.2 filt= 533.1 p2p=427.4 vol=1253.0 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=134.2 vol=1583.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol=1923.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol=2263.1 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1901 off=2667 dev= -766 flow= 406.5 filt= 322.8 p2p=623.9 vol=2440.9 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 542 off=2667 dev=-2125 flow=1200.3 filt=1146.9 p2p=803.5 vol=2830.8 stable=   0/5000
+[logic] attempt finished: FAIL vol=2890 ml, max=1212, avg=390, stable=0 ms, reason=FAIL_OVER_1200
+[logic] STATE_ACTIVE -> STATE_FAIL
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=239.7 vol= 2890.2 stable=   0/5000
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[logic] STATE_FAIL -> STATE_RESULT
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol=2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol=2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=3435 off=2667 dev=  768 flow= 407.7 filt= 242.9 p2p=1290.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=3246 off=2667 dev=  579 flow= 297.3 filt= 523.2 p2p=389.8 vol=2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1398.9 p2p=1189.7 vol= 2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=2570 off=2667 dev=  -97 flow=  15.8 filt= 297.8 p2p=1102.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.2 p2p=497.5 vol=2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol=2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol=2890.2 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol=2890.2 stable=   0/5000
+[logic] STATE_RESULT -> STATE_IDLE
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=23, successes=0
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3791 off=2667 dev= 1124 flow= 615.6 filt= 625.0 p2p= 54.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3698 off=2667 dev= 1031 flow= 561.3 filt= 568.2 p2p= 54.5 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3600 off=2667 dev=  933 flow= 504.0 filt= 506.5 p2p= 59.9 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3605 off=2667 dev=  938 flow= 507.0 filt= 505.7 p2p=  1.7 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.8 p2p=  1.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3605 off=2667 dev=  938 flow= 507.0 filt= 507.2 p2p=  2.3 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.5 p2p=  1.6 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3605 off=2667 dev=  938 flow= 507.0 filt= 506.4 p2p=  1.8 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3606 off=2667 dev=  939 flow= 507.6 filt= 506.4 p2p=  1.3 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3603 off=2667 dev=  936 flow= 505.8 filt= 506.2 p2p=  2.5 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3601 off=2667 dev=  934 flow= 504.6 filt= 506.1 p2p=  1.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 507.0 p2p=  1.6 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.4 p2p=  0.7 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.9 p2p=  1.6 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3603 off=2667 dev=  936 flow= 505.8 filt= 506.6 p2p=  0.9 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.9 p2p=  1.3 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3605 off=2667 dev=  938 flow= 507.0 filt= 506.4 p2p=  3.5 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.1 p2p=  1.5 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.4 p2p=  1.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3604 off=2667 dev=  937 flow= 506.4 filt= 506.4 p2p=  1.2 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=3602 off=2667 dev=  935 flow= 505.2 filt= 505.9 p2p=  1.6 vol= 2890.2 stable=   0/5000
+[dbg] STATE_IDLE raw=2781 off=2667 dev=  114 flow=  25.7 filt= 115.2 p2p=391.6 vol= 2890.2 stable=   0/5000
+[logic] STATE_IDLE -> STATE_READY
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=1397 off=2667 dev=-1270 flow= 700.9 filt= 639.3 p2p=610.9 vol= 124.4 stable=   0/5000
+[logic] attempt finished: FAIL vol=473 ml, max=1185, avg=695, stable=0 ms, reason=FAIL_OVER_1200
+[logic] STATE_ACTIVE -> STATE_FAIL
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1363.5 p2p=724.1 vol=  472.6 stable=   0/5000
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p= 29.2 vol=  472.6 stable=   0/5000
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol=  472.6 stable=   0/5000
+[logic] STATE_FAIL -> STATE_RESULT
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 361 off=2667 dev=-2306 flow=1306.0 filt=1324.0 p2p= 76.0 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw= 987 off=2667 dev=-1680 flow= 940.3 filt= 974.1 p2p=343.8 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw=1787 off=2667 dev= -880 flow= 473.1 filt= 515.2 p2p=450.6 vol= 472.6 stable=   0/5000
+[dbg] STATE_RESULT raw=2639 off=2667 dev=  -28 flow=   0.0 filt=  20.7 p2p=484.1 vol= 472.6 stable=   0/5000
+[logic] STATE_RESULT -> STATE_IDLE
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=24, successes=0
+[logic] STATE_IDLE -> STATE_READY
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=3631 off=2667 dev=  964 flow= 522.2 filt= 466.2 p2p=461.1 vol=  77.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=198.7 vol= 400.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  0.0 vol= 740.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2810 off=2667 dev=  143 flow=  42.6 filt= 129.6 p2p=549.7 vol=1004.7 stable=   0/5000
+[dbg] STATE_ACTIVE raw=1210 off=2667 dev=-1457 flow= 810.1 filt= 732.9 p2p=703.8 vol=1161.2 stable=   0/5000
+[logic] attempt finished: FAIL vol=1410 ml, max=1205, avg=564, stable=0 ms, reason=FAIL_OVER_1200
+[logic] STATE_ACTIVE -> STATE_FAIL
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1397.7 p2p=645.9 vol= 1409.7 stable=   0/5000
+[dbg] STATE_FAIL raw= 212 off=2667 dev=-2455 flow=1393.0 filt=1398.6 p2p=  1.8 vol= 1409.7 stable=   0/5000
+[logic] STATE_FAIL -> STATE_RESULT
+[dbg] STATE_RESULT raw=2312 off=2667 dev= -355 flow= 166.5 filt= 252.2 p2p=1141.1 vol= 1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 672.7 p2p=640.2 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  5.3 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=1338 off=2667 dev=-1329 flow= 735.3 filt= 630.7 p2p=603.8 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1399.3 p2p=742.7 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=1178 off=2667 dev=-1489 flow= 828.8 filt= 963.7 p2p=436.3 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=3289 off=2667 dev=  622 flow= 322.4 filt= 228.4 p2p=897.3 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.2 p2p=427.6 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw=2450 off=2667 dev= -217 flow=  85.9 filt=  70.0 p2p=613.3 vol=1409.7 stable=   0/5000
+[dbg] STATE_RESULT raw= 382 off=2667 dev=-2285 flow=1293.7 filt=1204.3 p2p=1125.3 vol= 1409.7 stable=   0/5000
+[logic] STATE_RESULT -> STATE_IDLE
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=25, successes=0
+[dbg] STATE_IDLE raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=174.5 vol= 1409.7 stable=   0/5000
+[dbg] STATE_IDLE raw= 474 off=2667 dev=-2193 flow=1240.0 filt=1311.8 p2p= 88.2 vol= 1409.7 stable=   0/5000
+[dbg] STATE_IDLE raw=2001 off=2667 dev= -666 flow= 348.1 filt= 408.2 p2p=885.3 vol= 1409.7 stable=   0/5000
+[logic] STATE_IDLE -> STATE_READY
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 565.8 p2p=538.9 vol=  53.5 stable=   0/5000
+[dbg] STATE_ACTIVE raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p= 90.8 vol= 388.6 stable=   0/5000
+[dbg] STATE_ACTIVE raw=2432 off=2667 dev= -235 flow=  96.4 filt=  64.2 p2p=626.3 vol= 627.8 stable=   0/5000
+[dbg] STATE_ACTIVE raw= 673 off=2667 dev=-1994 flow=1123.7 filt=1052.6 p2p=977.0 vol= 911.7 stable=   0/5000
+[logic] attempt finished: FAIL vol=1037 ml, max=1204, avg=593, stable=0 ms, reason=FAIL_OVER_1200
+[logic] STATE_ACTIVE -> STATE_FAIL
+[dbg] STATE_FAIL raw= 418 off=2667 dev=-2249 flow=1272.7 filt=1263.1 p2p=193.5 vol= 1037.4 stable=   0/5000
+[dbg] STATE_FAIL raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=133.9 vol= 1037.4 stable=   0/5000
+[logic] STATE_FAIL -> STATE_RESULT
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1400.0 p2p=  0.0 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=2448 off=2667 dev= -219 flow=  87.0 filt= 191.3 p2p=1208.7 vol= 1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 677.6 p2p=632.5 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=3900 off=2667 dev= 1233 flow= 679.3 filt= 679.3 p2p=  1.3 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=2359 off=2667 dev= -308 flow= 139.0 filt=  92.0 p2p=610.7 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw= 200 off=2667 dev=-2467 flow=1400.0 filt=1375.3 p2p=1266.9 vol= 1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw= 795 off=2667 dev=-1872 flow=1052.5 filt=1156.0 p2p=244.0 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=1932 off=2667 dev= -735 flow= 388.4 filt= 389.2 p2p=741.0 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=1928 off=2667 dev= -739 flow= 390.7 filt= 388.8 p2p=  1.6 vol=1037.4 stable=   0/5000
+[dbg] STATE_RESULT raw=1932 off=2667 dev= -735 flow= 388.4 filt= 388.3 p2p=  0.9 vol=1037.4 stable=   0/5000
+[logic] STATE_RESULT -> STATE_IDLE
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=26, successes=0
+[dbg] STATE_IDLE raw=1932 off=2667 dev= -735 flow= 388.4 filt= 388.5 p2p=  0.8 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 388.5 p2p=  2.3 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1932 off=2667 dev= -735 flow= 388.4 filt= 388.4 p2p=  0.8 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1932 off=2667 dev= -735 flow= 388.4 filt= 388.5 p2p=  0.4 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1932 off=2667 dev= -735 flow= 388.4 filt= 388.7 p2p=  0.6 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 388.9 p2p=  0.6 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 389.2 p2p=  0.7 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1930 off=2667 dev= -737 flow= 389.6 filt= 388.8 p2p=  0.6 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 389.0 p2p=  1.1 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 389.0 p2p=  0.6 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 389.2 p2p=  0.5 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1931 off=2667 dev= -736 flow= 389.0 filt= 389.3 p2p=  1.0 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1929 off=2667 dev= -738 flow= 390.2 filt= 389.8 p2p=  0.6 vol= 1037.4 stable=   0/5000
+[dbg] STATE_IDLE raw=1929 off=2667 dev= -738 flow= 390.2 filt= 390.2 p2p=  0.5 vol= 1037.4 stable=   0/5000
+Disconnected (ClearCommError failed (PermissionError(13, 'The device does not recognize the command.', None, 22)))
+Reconnecting to COM13    Connected!
+[dbg] STATE_READY raw=2316 off=2315 dev=    1 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2317 off=2315 dev=    2 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[dbg] STATE_READY raw=2278 off=2315 dev=  -37 flow=   0.0 filt=   0.0 p2p=  0.0 vol=  0.0 stable=   0/5000
+[logic] STATE_READY -> STATE_ACTIVE
+[dbg] STATE_ACTIVE raw=3784 off=2315 dev= 1469 flow= 957.8 filt= 708.4 p2p=708.4 vol=  53.7 stable=   0/5000
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x9 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0
+
+==============================================
+ SpiroBird Controller (MASTER) booting
+==============================================
+[boot] reset reason: POWERON (normal power-up)
+[boot] chip: ESP32-S3 rev0, 2 cores @ 240 MHz
+[boot] flash: 16384 KB, free heap: 357 KB
+[boot] pins: POT=4 BUZZER=15 MOTOR=17 WAKE_BTN=21 LED=48
+[boot] flags: WIFI=0 WIFI_MGR=1 SERVER=0 ESPNOW=0 MOTOR=0 BUZZER=1 SLEEP=0
+[boot] sizeof(SpiroPacket)=48 bytes (must match Display!)
+[storage] high score: bestVol=0 ml, bestStable=0 ms, attempts=28, successes=0
+[sensor] begin: pin=4, usable ADC range 200-3900, deadzone=70
+[haptics] buzzer ready on GPIO15 (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3808,len:0x4bc
+load:0x403c9700,len:0xbd8
+load:0x403cc700,len:0x2a0c
+entry 0x403c98d0

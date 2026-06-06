@@ -8,7 +8,7 @@ static const uint16_t COL_BAR_BG  = 0x10A2;
 // ----------------------------------------------------------------------------
 
 void UiScreens::centerText(const char *txt, int y, uint8_t font, uint16_t color) {
-  TFT_eSPI *g = _r->gfx();
+  lgfx::LovyanGFX *g = _r->gfx();
   g->setTextFont(font);
   g->setTextDatum(TC_DATUM);
   g->setTextColor(color, COL_BG);
@@ -17,7 +17,7 @@ void UiScreens::centerText(const char *txt, int y, uint8_t font, uint16_t color)
 
 void UiScreens::titleScreen(uint16_t bg, const char *title, uint16_t titleColor) {
   _r->clear(bg);
-  TFT_eSPI *g = _r->gfx();
+  lgfx::LovyanGFX *g = _r->gfx();
   g->setTextFont(4);
   g->setTextDatum(TC_DATUM);
   g->setTextColor(titleColor, bg);
@@ -119,7 +119,7 @@ void UiScreens::drawResult(const SpiroPacket &p) {
   titleScreen(COL_BG, p.success ? "RESULT - SUCCESS" : "RESULT - FAIL",
               p.success ? TFT_GREEN : TFT_RED);
   char buf[48];
-  TFT_eSPI *g = _r->gfx();
+  lgfx::LovyanGFX *g = _r->gfx();
   g->setTextFont(2);
   g->setTextDatum(TL_DATUM);
   g->setTextColor(TFT_WHITE, COL_BG);
@@ -161,7 +161,7 @@ void UiScreens::drawWifiSetup(const SpiroPacket &p) {
 // ----------------------------------------------------------------------------
 
 void UiScreens::drawFakeBanner() {
-  TFT_eSPI *g = _r->gfx();
+  lgfx::LovyanGFX *g = _r->gfx();
   g->fillRect(0, 0, GameRenderer::SCREEN_W, 14, TFT_MAROON);
   g->setTextFont(1);
   g->setTextDatum(TC_DATUM);
@@ -171,7 +171,7 @@ void UiScreens::drawFakeBanner() {
 
 // Bottom status bar with live connection/Wi-Fi/server info.
 void UiScreens::drawStatusBar(const SpiroPacket &p, const EspNowReceiver &rx) {
-  TFT_eSPI *g = _r->gfx();
+  lgfx::LovyanGFX *g = _r->gfx();
   const int y = GameRenderer::SCREEN_H - 24;
   g->fillRect(0, y, GameRenderer::SCREEN_W, 24, COL_BAR_BG);
 
