@@ -355,6 +355,9 @@ void setup() {
   digitalWrite(PIN_MOTOR, LOW);
 
   Serial.begin(115200);
+#if ENABLE_DEBUG_SERIAL && DEBUG_MIRROR_UART0
+  Serial0.begin(115200);   // CH340 "COM" port mirror (see config.h)
+#endif
 #if ENABLE_DEBUG_SERIAL
   // Native USB CDC: give the host a moment to enumerate, but never hang if
   // no monitor is attached (the cap keeps this boot-time-only wait short).

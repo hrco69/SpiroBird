@@ -7,10 +7,12 @@ void Storage::begin() {
     DBG("[storage] ERROR: NVS namespace '%s' failed to open\n", NVS_NAMESPACE);
     return;
   }
-  _bestVolumeMl = _prefs.getFloat("bestVol", 0.0f);
-  _bestStableMs = _prefs.getUShort("bestStable", 0);
-  _attemptCount = _prefs.getULong("attempts", 0);
-  _successCount = _prefs.getULong("successes", 0);
+  // isKey() guards avoid scary (but harmless) NOT_FOUND error logs on the
+  // very first boot, before any value was ever stored.
+  _bestVolumeMl = _prefs.isKey("bestVol")    ? _prefs.getFloat("bestVol", 0.0f) : 0.0f;
+  _bestStableMs = _prefs.isKey("bestStable") ? _prefs.getUShort("bestStable", 0) : 0;
+  _attemptCount = _prefs.isKey("attempts")   ? _prefs.getULong("attempts", 0)   : 0;
+  _successCount = _prefs.isKey("successes")  ? _prefs.getULong("successes", 0)  : 0;
   printStats();
 }
 

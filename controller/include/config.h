@@ -147,8 +147,18 @@
 // DEBUG MACROS
 // ============================================================================
 
+// Boards like this one expose TWO serial paths: native USB CDC ("USB" port,
+// = Serial) and the CH340 UART ("COM" port, = Serial0). Mirroring debug output
+// to both means the monitor works no matter which USB-C connector is used.
+#define DEBUG_MIRROR_UART0  1
+
 #if ENABLE_DEBUG_SERIAL
-  #define DBG(...)   Serial.printf(__VA_ARGS__)
+  #if DEBUG_MIRROR_UART0
+    #define DBG(...)   do { Serial.printf(__VA_ARGS__); \
+                            Serial0.printf(__VA_ARGS__); } while (0)
+  #else
+    #define DBG(...)   Serial.printf(__VA_ARGS__)
+  #endif
 #else
   #define DBG(...)   do {} while (0)
 #endif
