@@ -111,10 +111,27 @@ static void setStatusLed(ExerciseState s) {
 // ----------------------------------------------------------------------------
 // Boot diagnostics
 // ----------------------------------------------------------------------------
+static const char *resetReasonName(esp_reset_reason_t r) {
+  switch (r) {
+    case ESP_RST_POWERON:   return "POWERON (normal power-up)";
+    case ESP_RST_EXT:       return "EXT (external reset pin)";
+    case ESP_RST_SW:        return "SW (software restart)";
+    case ESP_RST_PANIC:     return "PANIC (crash/exception!)";
+    case ESP_RST_INT_WDT:   return "INT_WDT (interrupt watchdog!)";
+    case ESP_RST_TASK_WDT:  return "TASK_WDT (task watchdog!)";
+    case ESP_RST_WDT:       return "WDT (other watchdog!)";
+    case ESP_RST_DEEPSLEEP: return "DEEPSLEEP (wake from deep sleep)";
+    case ESP_RST_BROWNOUT:  return "BROWNOUT (supply voltage dipped! check wiring/shorts)";
+    case ESP_RST_SDIO:      return "SDIO";
+    default:                return "UNKNOWN";
+  }
+}
+
 static void printBootInfo() {
   DBG("\n==============================================\n");
   DBG(" SpiroBird Controller (MASTER) booting\n");
   DBG("==============================================\n");
+  DBG("[boot] reset reason: %s\n", resetReasonName(esp_reset_reason()));
   DBG("[boot] chip: %s rev%d, %d cores @ %d MHz\n",
       ESP.getChipModel(), ESP.getChipRevision(), ESP.getChipCores(), ESP.getCpuFreqMHz());
   DBG("[boot] flash: %u KB, free heap: %u KB\n",
