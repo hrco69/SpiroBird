@@ -60,7 +60,8 @@ public:
       cfg.offset_y         = 0;
       cfg.offset_rotation  = 0;
       cfg.readable         = true;
-      cfg.invert           = false;   // flip to true if colors look negative
+      cfg.invert           = true;    // ILI9341V on this board needs inversion
+                                      // (confirmed during hardware bring-up)
       cfg.rgb_order        = false;   // flip if red/blue are swapped
       cfg.dlen_16bit       = false;
       cfg.bus_shared       = false;
