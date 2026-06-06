@@ -406,9 +406,14 @@ void setup() {
   haptics.bootChirp();   // audible hardware self-test (no-op, buzzer disabled)
 #if ENABLE_MOTOR && MOTOR_BOOT_SELFTEST
   // Single short pulse so the transistor circuit is verified at every boot.
-  // Guards still apply (max pulse length + cooldown).
-  haptics.motorPulse(120);
-  DBG("[haptics] motor boot self-test pulse (120 ms)\n");
+  // SYNCHRONOUS on purpose: setup() blocks on Wi-Fi right after this (up to
+  // WIFI_PORTAL_TIMEOUT_SEC!), so the non-blocking watchdog in loop() cannot
+  // be trusted yet. A 120 ms delay() is acceptable in the boot phase.
+  // (HW-test bug: the async pulse stayed ON through the whole Wi-Fi portal.)
+  DBG("[haptics] motor boot self-test pulse (120 ms, synchronous)\n");
+  digitalWrite(PIN_MOTOR, HIGH);
+  delay(120);
+  digitalWrite(PIN_MOTOR, LOW);
 #endif
   logic.begin(&sensor);
 
@@ -522,6 +527,11 @@ void loop() {
 #if !ENABLE_WIFI && !ENABLE_SERVER_POST
   (void)networkAllowed;
 #endif
+
+  // Defensive watchdog tick: the server POST above may block up to
+  // HTTP_TIMEOUT_MS — if a motor pulse was running, end it on time using a
+  // FRESH timestamp (`now` is stale after a blocking call).
+  haptics.update(millis());
 
   // ---- 6) Sleep policy ------------------------------------------------------
 #if ENABLE_SLEEP_MODE
