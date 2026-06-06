@@ -38,13 +38,22 @@ bool WifiProvisioning::waitForConnection(uint32_t timeoutMs) {
 }
 
 void WifiProvisioning::goOffline(const char *reason) {
-  WiFi.mode(WIFI_STA);   // make sure the setup AP is gone
+  // OFFLINE is a TERMINAL, deterministic state (until reboot). The critical
+  // part is killing every source of background STA scanning: an idle STA
+  // that keeps looking for its AP hops channels every few seconds and drags
+  // the ESP-NOW TX channel with it (HW test: Display locked/lost signal in
+  // an endless loop while the router was off).
+  WiFi.setAutoReconnect(false);   // no stack-driven retries
+  WiFi.disconnect(false);         // stop STA association, keep radio ON
+  WiFi.mode(WIFI_STA);            // make sure the setup AP is gone
+  delay(50);                      // boot/offline transition only — let it settle
   // Park the radio on the fixed channel so the Display's scan is deterministic.
   esp_wifi_set_channel(ESPNOW_FIXED_CHANNEL, WIFI_SECOND_CHAN_NONE);
   _status = WIFI_ST_OFFLINE;
   DBG("[wifi] %s\n", reason);
-  DBG("[wifi] Wi-Fi unavailable, continuing offline (ESP-NOW on channel %d)\n",
+  DBG("[wifi] Wi-Fi unavailable, continuing offline (ESP-NOW fixed on channel %d)\n",
       ESPNOW_FIXED_CHANNEL);
+  DBG("[wifi] to retry Wi-Fi: reboot; to change network: hold the button during power-on\n");
 }
 
 // ----------------------------------------------------------------------------
@@ -54,7 +63,9 @@ void WifiProvisioning::goOffline(const char *reason) {
 void WifiProvisioning::begin() {
   _status = WIFI_ST_CONNECTING;
   WiFi.mode(WIFI_STA);
-  WiFi.setSleep(false);   // keep latency low for ESP-NOW coexistence
+  WiFi.setSleep(false);          // keep latency low for ESP-NOW coexistence
+  WiFi.setAutoReconnect(false);  // WE decide when to retry — stack-driven
+                                 // retries scan channels and break ESP-NOW
 
   // Holding the wake button during power-up forces the setup portal — the
   // ONLY way to reach it once credentials exist (see below for why).
@@ -70,18 +81,11 @@ void WifiProvisioning::begin() {
           WiFi.SSID().c_str(), WiFi.localIP().toString().c_str(), WiFi.channel());
       return;
     }
-    // Saved network exists but is unreachable right now. Do NOT open the
-    // portal (HW-test finding: a transient connect failure used to drop us
-    // into a 180 s portal on channel 1 — from the outside that looked like
-    // "ESP-NOW randomly dead until several controller resets"). Instead:
-    // park the radio on the fixed ESP-NOW channel, start the game, and let
-    // update() retry the connection in the background.
-    esp_wifi_set_channel(ESPNOW_FIXED_CHANNEL, WIFI_SECOND_CHAN_NONE);
-    _status = WIFI_ST_CONNECTING;
-    DBG("[wifi] saved Wi-Fi unreachable -> continuing on ESP-NOW channel %d, "
-        "background reconnect every %lu s\n",
-        ESPNOW_FIXED_CHANNEL, (unsigned long)(WIFI_RECONNECT_INTERVAL_MS / 1000));
-    DBG("[wifi] Wi-Fi unavailable, continuing offline\n");
+    // Saved network exists but is unreachable right now. Boot decides ONCE,
+    // deterministically: no portal (a transient failure must not cost 180 s)
+    // and no endless background retries (each retry = STA channel scan that
+    // breaks ESP-NOW). Offline mode, fixed channel, rock-solid game.
+    goOffline("saved Wi-Fi unreachable at boot");
     return;
   }
 
@@ -317,13 +321,14 @@ void WifiProvisioning::runFallbackPortal() {
 // ----------------------------------------------------------------------------
 
 void WifiProvisioning::update(uint32_t nowMs, bool allowReconnect) {
-  // Once we decided to play offline we stay offline until reboot — simple and
-  // predictable for the live demo (no surprise portal mid-game).
+  // OFFLINE is terminal until reboot — deterministic for the live demo (no
+  // surprise portals, no background scans disturbing ESP-NOW).
   if (_status == WIFI_ST_OFFLINE || _status == WIFI_ST_SETUP_PORTAL) return;
 
   if (WiFi.status() == WL_CONNECTED) {
     if (_status != WIFI_ST_CONNECTED) {
       _status = WIFI_ST_CONNECTED;
+      _retriesLeft = WIFI_RECONNECT_MAX_ATTEMPTS;   // re-arm for the next loss
       DBG("[wifi] (re)connected, IP=%s, channel=%d\n",
           WiFi.localIP().toString().c_str(), WiFi.channel());
     }
@@ -332,12 +337,22 @@ void WifiProvisioning::update(uint32_t nowMs, bool allowReconnect) {
 
   if (_status == WIFI_ST_CONNECTED) {
     _status = WIFI_ST_CONNECTING;
-    DBG("[wifi] connection lost\n");
+    _lastReconnectMs = nowMs;   // grace period before the first retry
+    DBG("[wifi] connection lost — will retry %d time(s), then lock into offline mode\n",
+        _retriesLeft);
   }
 
+  // Bounded, explicit retries: each one is a full STA scan that drags the
+  // ESP-NOW channel around, so after the budget is spent we go (and stay)
+  // offline instead of looping forever.
   if (allowReconnect && nowMs - _lastReconnectMs >= WIFI_RECONNECT_INTERVAL_MS) {
     _lastReconnectMs = nowMs;
-    DBG("[wifi] reconnect attempt...\n");
+    if (_retriesLeft == 0) {
+      goOffline("reconnect attempts exhausted");
+      return;
+    }
+    _retriesLeft--;
+    DBG("[wifi] reconnect attempt (%d left after this)...\n", _retriesLeft);
     WiFi.reconnect();   // async — result observed on later update() calls
   }
 }

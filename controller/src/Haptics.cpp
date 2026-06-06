@@ -117,21 +117,46 @@ void Haptics::errorBeep() {
 // -------------------------------- motor -------------------------------------
 
 void Haptics::motorPulse(uint16_t durationMs) {
+  MotorStep s[1] = {{durationMs, 0}};
+  motorPattern(s, 1);
+}
+
+void Haptics::motorFail() {
+  // Several long pulses in a row — unmistakable on the heavy vibro motor.
+  MotorStep seq[MOTOR_MAX_STEPS];
+  size_t n = min((size_t)MOTOR_FAIL_PULSE_COUNT, MOTOR_MAX_STEPS);
+  for (size_t i = 0; i < n; i++) {
+    seq[i] = {MOTOR_FAIL_PULSE_ON_MS, MOTOR_FAIL_PULSE_OFF_MS};
+  }
+  motorPattern(seq, n);
+}
+
+void Haptics::motorPattern(const MotorStep *steps, size_t count) {
 #if ENABLE_MOTOR
   uint32_t now = millis();
-  if (_motorOn) return;                                       // already pulsing
+  if (count == 0 || count > MOTOR_MAX_STEPS) return;
+  if (_motorActive) return;                                   // don't interrupt
   if (now - _motorLastOffMs < MOTOR_COOLDOWN_MS) return;      // cooldown guard
-  if (durationMs > MOTOR_MAX_PULSE_MS) durationMs = MOTOR_MAX_PULSE_MS;
-  if (durationMs == 0) return;
 
-  _motorOn = true;
-  _motorOnMs = now;
-  _motorDurMs = durationMs;
+  memcpy(_mSeq, steps, count * sizeof(MotorStep));
+  _mLen = count;
+  _mIdx = 0;
+  _motorActive = true;
+  _mPhaseOn = true;
+  _mPhaseStartMs = now;
   digitalWrite(PIN_MOTOR, HIGH);
-  DBG("[haptics] motor pulse %u ms\n", durationMs);
+  DBG("[haptics] motor pattern: %u step(s), first ON %u ms\n",
+      (unsigned)count, _mSeq[0].onMs);
 #else
-  (void)durationMs;
+  (void)steps; (void)count;
 #endif
+}
+
+void Haptics::motorFinish(uint32_t nowMs) {
+  digitalWrite(PIN_MOTOR, LOW);
+  _motorActive = false;
+  _mPhaseOn = false;
+  _motorLastOffMs = nowMs;
 }
 
 // ------------------------------- update -------------------------------------
@@ -149,14 +174,33 @@ void Haptics::update(uint32_t nowMs) {
   }
 
 #if ENABLE_MOTOR
-  if (_motorOn) {
-    uint32_t elapsed = nowMs - _motorOnMs;
-    // Normal end of pulse, plus a hard watchdog: the motor can NEVER stay on
-    // longer than MOTOR_MAX_PULSE_MS regardless of what was requested.
-    if (elapsed >= _motorDurMs || elapsed >= MOTOR_MAX_PULSE_MS) {
-      digitalWrite(PIN_MOTOR, LOW);
-      _motorOn = false;
-      _motorLastOffMs = nowMs;
+  if (_motorActive) {
+    const uint32_t elapsed = nowMs - _mPhaseStartMs;
+    if (_mPhaseOn) {
+      // Hard watchdog: an ON segment can NEVER exceed MOTOR_MAX_PULSE_MS,
+      // regardless of what the pattern requested.
+      uint16_t onMs = _mSeq[_mIdx].onMs;
+      if (onMs > MOTOR_MAX_PULSE_MS) onMs = MOTOR_MAX_PULSE_MS;
+      if (elapsed >= onMs) {
+        digitalWrite(PIN_MOTOR, LOW);
+        if (_mSeq[_mIdx].offMs == 0 && _mIdx + 1 >= _mLen) {
+          motorFinish(nowMs);             // pattern done
+        } else {
+          _mPhaseOn = false;              // gap between pulses
+          _mPhaseStartMs = nowMs;
+        }
+      }
+    } else {
+      if (elapsed >= _mSeq[_mIdx].offMs) {
+        _mIdx++;
+        if (_mIdx >= _mLen) {
+          motorFinish(nowMs);
+        } else {
+          _mPhaseOn = true;
+          _mPhaseStartMs = nowMs;
+          digitalWrite(PIN_MOTOR, HIGH);
+        }
+      }
     }
   }
 #endif
@@ -165,7 +209,5 @@ void Haptics::update(uint32_t nowMs) {
 void Haptics::allOff() {
   _playing = false;
   toneOff();
-  digitalWrite(PIN_MOTOR, LOW);
-  _motorOn = false;
-  _motorLastOffMs = millis();
+  motorFinish(millis());
 }

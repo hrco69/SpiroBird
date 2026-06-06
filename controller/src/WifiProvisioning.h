@@ -56,6 +56,7 @@ private:
   WifiStatus   _status = WIFI_ST_CONNECTING;
   PortalTickFn _portalTick = nullptr;
   uint32_t     _lastReconnectMs = 0;
+  uint8_t      _retriesLeft = WIFI_RECONNECT_MAX_ATTEMPTS;
 };
 
 #endif // ENABLE_WIFI

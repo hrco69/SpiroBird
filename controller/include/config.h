@@ -115,13 +115,16 @@
 
 // Motor safety: pulses only, hard guards. Durations tuned on real hardware:
 // the actual motor is a LARGE eccentric-mass vibro — it needs ~300 ms just to
-// spin up, so the original 80-250 ms pulses were barely perceptible.
+// spin up, so short sub-100 ms pulses are imperceptible.
 #define MOTOR_PWM_DUTY_MAX        90      // of 255 (~35 %) if PWM is ever used
-#define MOTOR_MAX_PULSE_MS        1000    // hard upper limit, enforced in update()
-#define MOTOR_COOLDOWN_MS         400     // minimum off-time between pulses
+#define MOTOR_MAX_PULSE_MS        1000    // hard cap PER ON-SEGMENT (watchdog)
+#define MOTOR_COOLDOWN_MS         400     // minimum off-time between patterns
 #define MOTOR_PULSE_WARN_MS       300     // leaving zone / approaching danger
 #define MOTOR_PULSE_COLLISION_MS  500     // success "win" pulse
-#define MOTOR_PULSE_FAIL_MS       800     // strong fail pulse
+// FAIL = a PATTERN of several long pulses in a row (unmistakable feedback):
+#define MOTOR_FAIL_PULSE_ON_MS    600     // each fail pulse length
+#define MOTOR_FAIL_PULSE_OFF_MS   250     // gap between fail pulses
+#define MOTOR_FAIL_PULSE_COUNT    3       // max 4 (Haptics::MOTOR_MAX_STEPS)
 
 // ============================================================================
 // SLEEP / POWER MANAGEMENT (Controller only — Display never deep-sleeps)
@@ -140,7 +143,11 @@
 #define WIFI_AP_NAME              "SpiroBird-Setup"
 #define WIFI_CONNECT_TIMEOUT_MS   8000
 #define WIFI_PORTAL_TIMEOUT_SEC   180
-#define WIFI_RECONNECT_INTERVAL_MS 30000UL  // periodic non-blocking reconnect
+#define WIFI_RECONNECT_INTERVAL_MS 30000UL  // pause between runtime reconnects
+// Runtime-loss policy: after this many failed reconnects, lock into OFFLINE
+// mode (each reconnect = a full STA channel scan that disrupts ESP-NOW, so
+// they must be bounded — found in HW test as lock/lose loop on the Display).
+#define WIFI_RECONNECT_MAX_ATTEMPTS 2
 #define HTTP_TIMEOUT_MS           1500
 #define SERVER_RESULTS_PATH       "/api/results"
 #define SERVER_HEALTH_PATH        "/health"
