@@ -222,8 +222,19 @@ static void buildAndSendPacket(uint32_t nowMs, bool deepSleepPending) {
   p.failReason      = (uint8_t)logic.failReason();
   p.targetZone      = sensor.inTargetZone();
   p.dangerZone      = sensor.inDangerZone();
-  p.success         = logic.state() == STATE_SUCCESS;
-  p.fail            = logic.state() == STATE_FAIL;
+  // success/fail describe the ATTEMPT OUTCOME, not the momentary state —
+  // they must stay correct through STATE_RESULT (the Display result screen
+  // renders from them). Source of truth: the stored AttemptResult, same as
+  // the server POST. (HW-test bug: state()==STATE_SUCCESS turned false in
+  // STATE_RESULT, so the result screen always said FAIL.)
+  {
+    const ExerciseState s = logic.state();
+    const bool outcomePhase =
+        (s == STATE_SUCCESS || s == STATE_FAIL || s == STATE_RESULT);
+    const AttemptResult &r = logic.result();
+    p.success = outcomePhase && r.valid && r.success;
+    p.fail    = outcomePhase && r.valid && !r.success;
+  }
   p.deepSleepPending = deepSleepPending;
 #if ENABLE_WIFI
   p.wifiStatus      = (uint8_t)wifiProv.status();
@@ -287,7 +298,8 @@ static void handleLogicEvents(uint32_t nowMs) {
         break;
 
       case LogicEvent::Success:
-        haptics.successMelody();
+        haptics.successMelody();            // no-op while buzzer is disabled
+        haptics.motorCollision();           // 150 ms tactile "win" pulse
         storage.recordAttempt(logic.result());
         g_pendingResultSideEffects = true;   // POST after the melody starts
         markActivity(nowMs);
@@ -391,7 +403,13 @@ void setup() {
   storage.begin();
   sensor.begin();
   haptics.begin();
-  haptics.bootChirp();   // audible hardware self-test (3 rising chirps)
+  haptics.bootChirp();   // audible hardware self-test (no-op, buzzer disabled)
+#if ENABLE_MOTOR && MOTOR_BOOT_SELFTEST
+  // Single short pulse so the transistor circuit is verified at every boot.
+  // Guards still apply (max pulse length + cooldown).
+  haptics.motorPulse(120);
+  DBG("[haptics] motor boot self-test pulse (120 ms)\n");
+#endif
   logic.begin(&sensor);
 
   // ESP-NOW first, so the Display can already be told about the setup portal.
