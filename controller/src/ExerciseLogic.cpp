@@ -90,11 +90,27 @@ void ExerciseLogic::update(uint32_t nowMs) {
 
     case STATE_IDLE:
       if (_startRequested) {
+        // Button press -> full recalibration (user should center the knob).
         _startRequested = false;
         resetAttempt();
         _sensor->startCalibration(nowMs);
         setState(STATE_CALIBRATING, nowMs);
         pushEvent(LogicEvent::CalibrationStarted);
+      } else if (_sensor->isCalibrated()) {
+        // "Flow detected" start (spec: button OR flow starts a round) — no
+        // recalibration, the stored offset is reused. Re-arms only after the
+        // knob RETURNS to rest first, so a knob stuck at full deflection
+        // (e.g. bad calibration) cannot endlessly restart rounds.
+        if (!_idleArmed) {
+          if (_sensor->filteredFlowMlS() < FLOW_START_THRESHOLD_ML_S * 0.5f) {
+            _idleArmed = true;
+          }
+        } else if (_sensor->flowDetected()) {
+          _idleArmed = false;
+          resetAttempt();
+          setState(STATE_READY, nowMs);
+          pushEvent(LogicEvent::ReadyToStart);
+        }
       }
       break;
 

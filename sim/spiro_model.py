@@ -171,6 +171,7 @@ class ExerciseLogic:
 
     _state_entered_ms: int = 0
     _start_requested: bool = False
+    _idle_armed: bool = False
     _attempt_start_ms: int = 0
     _stable_start_ms: int = 0
     _flow_sum: float = 0.0
@@ -209,11 +210,22 @@ class ExerciseLogic:
         s = self.state
         if s == STATE_IDLE:
             if self._start_requested:
+                # button -> full recalibration
                 self._start_requested = False
                 self._reset_attempt()
                 self.sensor.start_calibration(now_ms)
                 self._set_state(STATE_CALIBRATING, now_ms)
                 self._push_event("CalibrationStarted", now_ms)
+            elif self.sensor.calibrated:
+                # flow-detected start: re-arms only after returning to rest
+                if not self._idle_armed:
+                    if self.sensor.filtered_flow_ml_s < FLOW_START_THRESHOLD_ML_S * 0.5:
+                        self._idle_armed = True
+                elif self.sensor.flow_detected():
+                    self._idle_armed = False
+                    self._reset_attempt()
+                    self._set_state(STATE_READY, now_ms)
+                    self._push_event("ReadyToStart", now_ms)
         elif s == STATE_CALIBRATING:
             if not self.sensor.calibrating:
                 self._set_state(STATE_READY, now_ms)

@@ -14,7 +14,7 @@ void BreathSensor::startCalibration(uint32_t nowMs) {
   _calEndMs    = nowMs + CALIBRATION_DURATION_MS;
   _calSum      = 0;
   _calCount    = 0;
-  DBG("[sensor] calibration started (%d ms) — do not touch the potentiometer\n",
+  DBG("[sensor] calibration started (%d ms) — CENTER the potentiometer and do not touch it\n",
       CALIBRATION_DURATION_MS);
 }
 
@@ -39,6 +39,10 @@ void BreathSensor::update(uint32_t nowMs) {
       resetHistory();
       DBG("[sensor] calibration done: offset=%u (expected ~2048), usableDev=%.0f, samples=%u\n",
           _offsetAdc, _usableDeviation, _calCount);
+      if (_offsetAdc >= ADC_MAX_USABLE - 300 || _offsetAdc <= ADC_MIN_USABLE + 300) {
+        DBG("[sensor] *** WARNING: offset is at an ADC rail! ***\n");
+        DBG("[sensor] *** Center the potentiometer, then press the button (or RST) to recalibrate. ***\n");
+      }
     }
     return;
   }

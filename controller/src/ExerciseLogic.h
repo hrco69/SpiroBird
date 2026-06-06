@@ -58,6 +58,7 @@ private:
   FailReason    _failReason = FAIL_NONE;
   uint32_t _stateEnteredMs  = 0;
   bool     _startRequested  = false;
+  bool     _idleArmed       = false;   // knob returned to rest while in IDLE
 
   // Attempt tracking
   uint32_t _attemptStartMs = 0;
