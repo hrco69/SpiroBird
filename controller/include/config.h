@@ -147,8 +147,11 @@
 // ESP-NOW channel when Wi-Fi is disabled/offline (with Wi-Fi connected the
 // active Wi-Fi channel is used automatically — see docs/protocol.md).
 #define ESPNOW_FIXED_CHANNEL      1
-// How often the Display is told about the open setup portal:
-#define PORTAL_STATUS_SEND_INTERVAL_MS 250
+// How often the Display is told about the open setup portal.
+// MUST be fast (40 Hz, like live packets): the Display's channel scan dwells
+// only CHANNEL_SCAN_DWELL_MS (300 ms) per channel and needs LOCK_VALID_PACKETS
+// (3) inside one dwell — 250 ms packets could never lock (found in HW test).
+#define PORTAL_STATUS_SEND_INTERVAL_MS 25
 
 // ============================================================================
 // DEBUG MACROS
