@@ -79,9 +79,9 @@ docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacij
 | 5 | Display firmware (receiver, render igre, UI ekrani, touch) | ✅ **validirano na hardveru** |
 | 6 | Backend (Express + dashboard) | ✅ testirano lokalno (svi endpointi) |
 | 7 | Simulacija i testovi (`sim/`) | ✅ 23 unit testa + 5 scenarija — svi prolaze |
-| 8 | Finalna dokumentacija (testing-plan, troubleshooting, case) | 🔶 testing-plan ✅, ostalo u izradi |
-| 9 | Prezentacija (Marp → PDF, committano u repo) | ⏳ |
-| 10 | Upute za flashanje + priprema za obranu | ⏳ |
+| 8 | Finalna dokumentacija (testing-plan, troubleshooting, case, izvještaji) | ✅ |
+| 9 | Prezentacija (.pptx u `docs/presentation/`, committano u repo) | ✅ |
+| 10 | Backend u produkciji ([spirobird.onrender.com](https://spirobird.onrender.com)) + priprema za obranu | ✅ |
 
 > Hardverska validacija (koraci 1–7 + sleep modovi) provedena na stvarnim uređajima —
 > sirovi serijski logovi testova su u [`docs/test-logs/`](docs/test-logs/).
@@ -129,6 +129,6 @@ Ne pretpostavljati da sve radi odjednom — strogo ovim redom
 
 - **Nikad 5 V u 3V3 pin.**
 - **Nikad motor direktno na GPIO ili 3V3** — uvijek kroz NPN tranzistor s flyback diodom.
-- Motor je nominalno 3 V, na 5 V smije raditi **samo u kratkim pulsevima** (max 250 ms).
+- Motor je nominalno 3 V, na 5 V smije raditi **samo u pulsevima** (tvrdi limit 1000 ms po segmentu + cooldown, softverski watchdog).
 - Zajednički GND između ESP32 i vanjskog napajanja motora je **obavezan**.
 - Detalji u [`docs/wiring.md`](docs/wiring.md).

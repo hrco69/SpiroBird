@@ -9,7 +9,7 @@
 | Signal | GPIO | Smjer | Komponenta | Napomena |
 |---|---|---|---|---|
 | `PIN_POT_ADC` | **4** | ulaz (ADC) | potenciometar B10K, wiper | ADC1, 12-bit 0–4095 |
-| `PIN_BUZZER` | **15** | izlaz (LEDC PWM) | pasivni buzzer (+) | DC ne radi — mora PWM/ton |
+| `PIN_BUZZER` | **15** | izlaz (LEDC PWM) | ~~pasivni buzzer~~ **eliminiran** | komponenta neispravna; LED preuzela indikaciju |
 | `PIN_MOTOR` | **17** | izlaz | baza NPN preko 1 kΩ | nikad direktno na motor! |
 | `PIN_WAKE_BUTTON` | **21** | ulaz (`INPUT_PULLUP`) | momentary rocker → GND | pritisnut = LOW; ⚠️ vidi RTC napomenu |
 | `PIN_STATUS_LED` | **48** | izlaz | onboard WS2812 RGB | opcionalno |
@@ -53,10 +53,17 @@ Ako se na ploči pokaže nepouzdan (npr. interni pull-up oslabi u deep sleepu), 
 | srednja noga (wiper) | GPIO4 (`PIN_POT_ADC`) |
 
 - ADC 12-bit, raspon 0–4095; **upotrebljivi raspon 200–3900** zbog nelinearnosti rubova
-- Centar (~2048) se **kalibrira pri startu** (prosjek ~1 s uzoraka u mirovanju), ne hardkodira
-- Deadzone ±70 ADC counts oko kalibriranog centra → protok = 0
+- Nul-točka je **fiksni centar 2000**: kalibracija = čekanje da korisnik postavi
+  knob u zonu **1700–2300 i drži 2 s** (display navodi: turn UP/DOWN). Redizajn
+  nakon hardverskog testiranja — kalibracija prosjekom znala je "uloviti" rail.
+- Deadzone ±70 ADC counts oko centra → protok = 0
 
-## 2. Pasivni buzzer
+## 2. Pasivni buzzer — ⚠️ ELIMINIRAN IZ PROJEKTA
+
+> Tijekom hardverskog testiranja komponenta je proizvodila samo "klik" umjesto
+> tona (ni nakon prilagodbe frekvencija na rezonantni pojas pieza 2–3 kHz) →
+> **eliminirana** (`ENABLE_BUZZER 0`). Statusnu indikaciju preuzela je onboard
+> RGB LED. Kod i ožičenje ostaju dokumentirani za slučaj zamjene komponente.
 
 ```txt
    GPIO15 ────────► buzzer (+)
@@ -117,10 +124,12 @@ Ako se na ploči pokaže nepouzdan (npr. interni pull-up oslabi u deep sleepu), 
 ### Softverska zaštita (implementirano u firmwareu)
 
 - **Prva instrukcija u `setup()`**: `PIN_MOTOR` → LOW
-- `MOTOR_MAX_PULSE_MS 250` — tvrdi limit trajanja pulsa
-- `MOTOR_COOLDOWN_MS 500` — pauza između pulseva
+- `MOTOR_MAX_PULSE_MS 1000` — tvrdi limit trajanja ON segmenta
+- `MOTOR_COOLDOWN_MS 400` — pauza između uzoraka pulseva
 - `MOTOR_PWM_DUTY_MAX 90` (od 255, ~35 %) — ako se koristi PWM
-- Pulsevi: upozorenje 80 ms · kolizija 150 ms · fail 250 ms — **nikad trajno uključen**
+- Pulsevi (tunirano za veliki vibro motor s teškim ekscentrom — treba ~300 ms
+  zaleta): upozorenje 300 ms · uspjeh 500 ms · fail **uzorak 3 × 600 ms** —
+  **nikad trajno uključen**
 
 ## 4. Wake/start gumb (momentary rocker)
 
