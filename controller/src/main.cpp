@@ -161,7 +161,19 @@ static void printBootInfo() {
 // ----------------------------------------------------------------------------
 // Activity tracking (drives pseudo/deep sleep)
 // ----------------------------------------------------------------------------
-static void markActivity(uint32_t nowMs) {
+// Every reset of the inactivity timer is logged (rate-limited) with its
+// source, so a stuck-awake device tells us WHO keeps it awake.
+static void markActivity(uint32_t nowMs, const char *source) {
+#if ENABLE_DEBUG_SERIAL && ENABLE_SLEEP_MODE
+  static uint32_t lastLogMs = 0;
+  if (nowMs - lastLogMs >= 2000) {
+    lastLogMs = nowMs;
+    DBG("[sleep] activity: %s (idle was %lu ms)\n",
+        source, (unsigned long)(nowMs - g_lastActivityMs));
+  }
+#else
+  (void)source;
+#endif
   g_lastActivityMs = nowMs;
 }
 
@@ -289,7 +301,7 @@ static void handleLogicEvents(uint32_t nowMs) {
         break;
 
       case LogicEvent::AttemptStarted:
-        markActivity(nowMs);
+        markActivity(nowMs, "attempt-start");
         break;
 
       case LogicEvent::EnteredZone:
@@ -309,7 +321,7 @@ static void handleLogicEvents(uint32_t nowMs) {
         haptics.motorCollision();           // 150 ms tactile "win" pulse
         storage.recordAttempt(logic.result());
         g_pendingResultSideEffects = true;   // POST after the melody starts
-        markActivity(nowMs);
+        markActivity(nowMs, "success");
         break;
 
       case LogicEvent::Fail:
@@ -317,7 +329,7 @@ static void handleLogicEvents(uint32_t nowMs) {
         haptics.motorFail();
         storage.recordAttempt(logic.result());
         g_pendingResultSideEffects = true;
-        markActivity(nowMs);
+        markActivity(nowMs, "fail");
         break;
 
       case LogicEvent::ResultDone:
@@ -362,13 +374,22 @@ static void updateSleepPolicy(uint32_t nowMs) {
     }
 #endif
   } else {
-    // Wake instantly on potentiometer movement (button wake is handled in the
-    // button section of loop()).
+    // Wake on potentiometer movement (button wake is handled in the button
+    // section of loop()). Debounced: the deviation must persist >= 50 ms so a
+    // single scratchy-wiper ADC spike cannot wake the device.
+    static uint32_t s_wakeMoveSinceMs = 0;
     int delta = abs((int)sensor.rawAdc() - (int)g_sleepRefAdc);
     if (delta > POT_MOVEMENT_WAKE_ADC) {
-      DBG("[sleep] potentiometer moved (delta=%d) -> waking up\n", delta);
-      logic.wakeUp(nowMs);
-      markActivity(nowMs);
+      if (s_wakeMoveSinceMs == 0) {
+        s_wakeMoveSinceMs = nowMs;
+      } else if (nowMs - s_wakeMoveSinceMs >= 50) {
+        s_wakeMoveSinceMs = 0;
+        DBG("[sleep] potentiometer moved (delta=%d) -> waking up\n", delta);
+        logic.wakeUp(nowMs);
+        markActivity(nowMs, "wake-knob");
+      }
+    } else {
+      s_wakeMoveSinceMs = 0;
     }
 
 #if ENABLE_CONTROLLER_DEEP_SLEEP
@@ -461,7 +482,7 @@ void setup() {
 #endif
 
   uint32_t now = millis();
-  markActivity(now);
+  markActivity(now, "boot");
   setStatusLed(logic.state());
 
   // Auto-start calibration on boot so the demo needs no extra button press.
@@ -484,7 +505,7 @@ void loop() {
         digitalRead(PIN_WAKE_BUTTON) == LOW) {
       g_lastButtonMs = now;
       DBG("[main] button pressed\n");
-      markActivity(now);
+      markActivity(now, "button");
       if (logic.state() == STATE_SLEEP) {
         logic.wakeUp(now);
       } else {
@@ -509,11 +530,19 @@ void loop() {
 
     // Activity = the knob MOVED, not "flow is nonzero": a knob parked away
     // from center would otherwise keep the device awake forever and the
-    // sleep timers could never fire.
+    // sleep timers could never fire. Debounced over 5 consecutive samples
+    // (50 ms) so a scratchy wiper spot producing single ADC spikes cannot
+    // keep the device awake either.
     static uint16_t lastActivityRaw = 0;
+    static uint8_t  moveSampleCount = 0;
     if (abs((int)sensor.rawAdc() - (int)lastActivityRaw) > POT_MOVEMENT_WAKE_ADC) {
-      lastActivityRaw = sensor.rawAdc();
-      markActivity(now);
+      if (++moveSampleCount >= 5) {
+        moveSampleCount = 0;
+        lastActivityRaw = sensor.rawAdc();
+        markActivity(now, "knob-move");
+      }
+    } else {
+      moveSampleCount = 0;
     }
   }
 
@@ -560,10 +589,18 @@ void loop() {
   // ---- 8) Periodic debug line ------------------------------------------------
   if (now - g_lastDebugMs >= DEBUG_PRINT_INTERVAL_MS) {
     g_lastDebugMs = now;
-    DBG("[dbg] %s raw=%4u off=%4u dev=%5d flow=%6.1f filt=%6.1f p2p=%5.1f vol=%7.1f stable=%4u/%u\n",
+    DBG("[dbg] %s raw=%4u off=%4u dev=%5d flow=%6.1f filt=%6.1f p2p=%5.1f vol=%7.1f stable=%4u/%u"
+#if ENABLE_SLEEP_MODE
+        " idle=%lus"
+#endif
+        "\n",
         ExerciseLogic::stateName(logic.state()),
         sensor.rawAdc(), sensor.offsetAdc(), sensor.deviationAdc(),
         sensor.flowMlS(), sensor.filteredFlowMlS(), sensor.peakToPeak(),
-        logic.volumeMl(), logic.stableTimeMs(), STABLE_SUCCESS_MS);
+        logic.volumeMl(), logic.stableTimeMs(), STABLE_SUCCESS_MS
+#if ENABLE_SLEEP_MODE
+        , (unsigned long)((now - g_lastActivityMs) / 1000)
+#endif
+        );
   }
 }
