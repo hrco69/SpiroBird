@@ -129,6 +129,6 @@ Ne pretpostavljati da sve radi odjednom — strogo ovim redom
 
 - **Nikad 5 V u 3V3 pin.**
 - **Nikad motor direktno na GPIO ili 3V3** — uvijek kroz NPN tranzistor s flyback diodom.
-- Motor je nominalno 3 V, na 5 V smije raditi **samo u kratkim pulsevima** (max 250 ms).
+- Motor je nominalno 3 V, na 5 V smije raditi **samo u pulsevima** (tvrdi limit 1000 ms po segmentu + cooldown, softverski watchdog).
 - Zajednički GND između ESP32 i vanjskog napajanja motora je **obavezan**.
 - Detalji u [`docs/wiring.md`](docs/wiring.md).
