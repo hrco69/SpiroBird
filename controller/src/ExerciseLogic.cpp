@@ -65,6 +65,7 @@ void ExerciseLogic::requestStart(uint32_t nowMs) {
 
 void ExerciseLogic::enterSleep(uint32_t nowMs) {
   resetAttempt();
+  _sensor->cancelCalibration();   // stop "center the knob" hints during sleep
   setState(STATE_SLEEP, nowMs);
 }
 

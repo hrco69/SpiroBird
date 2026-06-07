@@ -18,6 +18,12 @@ void BreathSensor::startCalibration(uint32_t nowMs) {
       POT_CENTER_HOLD_MS);
 }
 
+void BreathSensor::cancelCalibration() {
+  if (!_calibrating) return;
+  _calibrating = false;   // _calibrated stays false -> restarted on wake
+  DBG("[sensor] calibration cancelled (sleep)\n");
+}
+
 void BreathSensor::update(uint32_t nowMs) {
   _rawAdc = readAveragedAdc();
 

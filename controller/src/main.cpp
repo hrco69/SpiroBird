@@ -587,8 +587,22 @@ void loop() {
   }
 
   // ---- 8) Periodic debug line ------------------------------------------------
-  if (now - g_lastDebugMs >= DEBUG_PRINT_INTERVAL_MS) {
+  // Quiet in sleep: a short line every 10 s instead of the full 500 ms spam.
+  const uint32_t dbgInterval =
+      (logic.state() == STATE_SLEEP) ? 10000 : DEBUG_PRINT_INTERVAL_MS;
+  if (now - g_lastDebugMs >= dbgInterval) {
     g_lastDebugMs = now;
+    if (logic.state() == STATE_SLEEP) {
+#if ENABLE_SLEEP_MODE && ENABLE_CONTROLLER_DEEP_SLEEP
+      DBG("[dbg] STATE_SLEEP idle=%lus (deep sleep at %lus, wake: button/knob)\n",
+          (unsigned long)((now - g_lastActivityMs) / 1000),
+          (unsigned long)(DEEP_SLEEP_TIMEOUT_MS / 1000));
+#else
+      DBG("[dbg] STATE_SLEEP idle=%lus (wake: button/knob)\n",
+          (unsigned long)((now - g_lastActivityMs) / 1000));
+#endif
+      return;
+    }
     DBG("[dbg] %s raw=%4u off=%4u dev=%5d flow=%6.1f filt=%6.1f p2p=%5.1f vol=%7.1f stable=%4u/%u"
 #if ENABLE_SLEEP_MODE
         " idle=%lus"

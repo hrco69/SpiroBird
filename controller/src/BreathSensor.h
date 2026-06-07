@@ -22,6 +22,7 @@ public:
   // update() at the sample rate; isCalibrating() turns false once the knob
   // has stayed in the center zone for POT_CENTER_HOLD_MS.
   void startCalibration(uint32_t nowMs);
+  void cancelCalibration();   // sleep interrupts an unfinished calibration
   bool isCalibrating() const { return _calibrating; }
   bool isCalibrated()  const { return _calibrated; }
 
