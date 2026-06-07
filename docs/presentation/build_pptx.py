@@ -14,6 +14,7 @@ from pptx import Presentation
 from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
+from pptx.enum.shapes import MSO_SHAPE
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 IMG = os.path.join(HERE, "img")
@@ -87,11 +88,13 @@ def bullets(slide, items, left=0.6, top=1.5, w=12.1, h=5.6, size=18):
     txt(slide, Inches(left), Inches(top), Inches(w), Inches(h), rows)
 
 
-def image_slot(slide, fname, left, top, w, h, label):
+def image_slot(slide, fname, left, top, w, h, label, optional=False):
     path = os.path.join(IMG, fname)
     if os.path.exists(path):
         slide.shapes.add_picture(path, Inches(left), Inches(top),
                                  width=Inches(w), height=Inches(h))
+    elif optional:
+        return  # optional image missing -> draw nothing (no ugly placeholder)
     else:
         ph = slide.shapes.add_shape(1, Inches(left), Inches(top),
                                     Inches(w), Inches(h))
@@ -102,6 +105,50 @@ def image_slot(slide, fname, left, top, w, h, label):
         p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
         r = p.add_run(); r.text = f"[ SLIKA: {fname} ]\n{label}"
         r.font.size = Pt(12); r.font.color.rgb = MUTED
+
+
+def dbox(slide, left, top, w, h, head, subs, accent):
+    """Rounded panel box for the architecture diagram."""
+    bx = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,
+                                Inches(left), Inches(top), Inches(w), Inches(h))
+    bx.fill.solid(); bx.fill.fore_color.rgb = PANEL
+    bx.line.color.rgb = accent; bx.line.width = Pt(1.75)
+    tf = bx.text_frame; tf.word_wrap = True
+    tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    p = tf.paragraphs[0]; p.alignment = PP_ALIGN.CENTER
+    r = p.add_run(); r.text = head
+    r.font.size = Pt(13); r.font.bold = True; r.font.color.rgb = accent
+    for sline in subs:
+        p = tf.add_paragraph(); p.alignment = PP_ALIGN.CENTER
+        r = p.add_run(); r.text = sline
+        r.font.size = Pt(9.5); r.font.color.rgb = TEXT
+
+
+def arrow_down(slide, cx, top, h, label, color):
+    ar = slide.shapes.add_shape(MSO_SHAPE.DOWN_ARROW,
+                                Inches(cx - 0.12), Inches(top),
+                                Inches(0.24), Inches(h))
+    ar.fill.solid(); ar.fill.fore_color.rgb = color
+    ar.line.fill.background()
+    txt(slide, Inches(cx + 0.10), Inches(top + h / 2 - 0.25), Inches(1.9),
+        Inches(0.6), [(label, 0, MUTED, 9, False)])
+
+
+def draw_architecture(slide, left, top):
+    """Vector block diagram: Controller -> Display (ESP-NOW), -> Backend (HTTPS)."""
+    w = 4.6
+    dbox(slide, left, top, w, 1.15, "CONTROLLER / MASTER  (ESP32-S3)",
+         ["potenciometar · motor · LED · logika vježbe",
+          "Wi-Fi + NVS · izvor istine"], YELLOW)
+    arrow_down(slide, left + 1.0, top + 1.2, 0.75, "ESP-NOW\n48 B @ 40 Hz", CYAN)
+    arrow_down(slide, left + w - 1.5, top + 1.2, 0.75, "HTTPS POST\n(nakon pokušaja)", GREEN)
+    dbox(slide, left, top + 2.0, 2.15, 1.5, "DISPLAY / SLAVE",
+         ["2.8\" TFT + touch", "channel scan/lock", "samo render"], CYAN)
+    dbox(slide, left + w - 2.15, top + 2.0, 2.15, 1.5, "BACKEND",
+         ["Node.js / Express", "spirobird", ".onrender.com"], GREEN)
+    txt(slide, Inches(left), Inches(top + 3.6), Inches(w), Inches(0.4),
+        [("Display se NIKAD ne spaja na Wi-Fi — samo sluša ESP-NOW",
+          0, MUTED, 10, False)], align=PP_ALIGN.CENTER)
 
 
 def build():
@@ -148,9 +195,8 @@ def build():
         ("BACKEND: Node.js/Express + dashboard — javno na spirobird.onrender.com", 0, CYAN),
         ("HTTP POST rezultata SAMO nakon završetka pokušaja, timeout 1500 ms", 1),
         ("Offline-first: bez Wi-Fi-ja i servera igra radi potpuno normalno", 0, GREEN, True),
-    ], top=1.4, h=3.4)
-    image_slot(s, "arhitektura.png", 8.6, 4.6, 4.2, 2.6,
-               "blok dijagram (može screenshot iz wikija, str. 4)")
+    ], top=1.4, h=5.6, w=7.6, size=16)
+    draw_architecture(s, 8.3, 1.6)
 
     # ---- 4. Hardver ----
     s = new_slide(prs); title(s, "Hardver i ožičenje")
@@ -222,9 +268,9 @@ def build():
         ("OFFLINE je deterministično, terminalno stanje — demo se ne može 'zaglaviti'", 0, GREEN),
     ], w=7.4, size=16)
     image_slot(s, "foto-decision.jpg", 8.2, 1.4, 4.6, 2.6,
-               "decision ekran (kratki/dugi pritisak)")
+               "decision ekran (kratki/dugi pritisak)", optional=True)
     image_slot(s, "screenshot-portal.png", 8.2, 4.2, 4.6, 2.6,
-               "captive portal na mobitelu")
+               "captive portal na mobitelu", optional=True)
 
     # ---- 9. Igra / render ----
     s = new_slide(prs); title(s, "Igra na displayu", "LovyanGFX · 30 FPS · double buffering")
@@ -264,7 +310,7 @@ def build():
         "Neaktivnost = isključivo input (pomak/gumb/događaji) — nijedno stanje ne drži uređaj budnim",
     ])
     image_slot(s, "foto-sleep.jpg", 9.2, 5.0, 3.6, 2.0,
-               "sleep ekran (opcionalno)")
+               "sleep ekran", optional=True)
 
     # ---- 12. Backend ----
     s = new_slide(prs); title(s, "Backend i dashboard", "Node.js / Express · Render.com")
@@ -344,14 +390,18 @@ def build():
 
     prs.save(OUT)
     print(f"OK: {OUT}")
-    missing = [f for f in [
-        "arhitektura.png", "shema-spajanja.png", "foto-setup.jpg",
-        "foto-igra.jpg", "foto-decision.jpg", "screenshot-portal.png",
-        "foto-sleep.jpg", "screenshot-dashboard.png", "screenshot-github.png",
-    ] if not os.path.exists(os.path.join(IMG, f))]
-    if missing:
-        print("Nedostaju slike (placeholderi umetnuti):")
-        for f in missing:
+    required = ["shema-spajanja.png", "foto-setup.jpg", "foto-igra.jpg",
+                "screenshot-dashboard.png", "screenshot-github.png"]
+    optional = ["foto-decision.jpg", "screenshot-portal.png", "foto-sleep.jpg"]
+    miss_r = [f for f in required if not os.path.exists(os.path.join(IMG, f))]
+    miss_o = [f for f in optional if not os.path.exists(os.path.join(IMG, f))]
+    if miss_r:
+        print("NEDOSTAJU obavezne slike (placeholderi umetnuti):")
+        for f in miss_r:
+            print("  img/" + f)
+    if miss_o:
+        print("Opcionalne slike (preskocene, bez placeholdera):")
+        for f in miss_o:
             print("  img/" + f)
 
 
