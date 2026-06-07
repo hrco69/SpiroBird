@@ -69,7 +69,11 @@ void ExerciseLogic::enterSleep(uint32_t nowMs) {
 }
 
 void ExerciseLogic::wakeUp(uint32_t nowMs) {
-  if (_state == STATE_SLEEP) setState(STATE_IDLE, nowMs);
+  if (_state != STATE_SLEEP) return;
+  setState(STATE_IDLE, nowMs);
+  // If sleep interrupted the very first calibration, restart it so the game
+  // can be started by knob movement again (otherwise IDLE would wait forever).
+  if (!_sensor->isCalibrated()) _startRequested = true;
 }
 
 void ExerciseLogic::resetAttempt() {

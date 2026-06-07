@@ -346,12 +346,10 @@ static void handleLogicEvents(uint32_t nowMs) {
 static void updateSleepPolicy(uint32_t nowMs) {
   const bool sleeping = logic.state() == STATE_SLEEP;
 
-  // Exercise in progress counts as activity.
-  ExerciseState s = logic.state();
-  if (s == STATE_CALIBRATING || s == STATE_READY || s == STATE_ACTIVE ||
-      s == STATE_SUCCESS || s == STATE_FAIL) {
-    markActivity(nowMs);
-  }
+  // Inactivity is INPUT-based ONLY (knob movement, button press, attempt
+  // start/success/fail events). No state keeps the device awake by itself —
+  // HW-test decision: 60 s without touching anything -> pseudo sleep from ANY
+  // state (even READY/CALIBRATING), 3 min total -> deep sleep.
 
   if (!sleeping) {
 #if ENABLE_CONTROLLER_PSEUDO_SLEEP
