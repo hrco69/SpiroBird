@@ -4,6 +4,10 @@ SpiroBird — generator prezentacije (PowerPoint .pptx)
 Pokretanje:  python build_pptx.py
 Izlaz:       SpiroBird-prezentacija.pptx
 
+!! UPOZORENJE: committana .pptx sadrži RUČNE dorade (raspored slika i sl.)
+!! povrh generiranog sadržaja. Ponovno pokretanje skripte PREGAZILO bi te
+!! dorade — skripta je zadržana kao polazna točka / dokumentacija strukture.
+
 Slike se čitaju iz  img/  poddirektorija; ako slika ne postoji, umjesto nje se
 crta placeholder okvir s uputom što uslikati. Nakon dodavanja slika samo ponovno
 pokrenuti skriptu.
