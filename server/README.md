@@ -60,6 +60,28 @@ Invoke-RestMethod http://localhost:3000/health
 Invoke-RestMethod -Method Post -Uri http://localhost:3000/api/results -ContentType "application/json" -Body '{"deviceId":"test","success":true,"volumeMl":5120,"maxFlowMlS":1080,"avgFlowMlS":965,"stableTimeMs":5000,"failReason":null,"timestampMs":1}'
 ```
 
+## Održavanje produkcijskog servera (Render)
+
+Produkcija: **https://spirobird.onrender.com**
+
+```powershell
+# provjera da je server živ
+Invoke-RestMethod https://spirobird.onrender.com/health
+
+# pregled svih rezultata
+Invoke-RestMethod https://spirobird.onrender.com/api/results
+
+# BRISANJE SVIH REZULTATA (čista ploča prije demo-a!)
+Invoke-RestMethod -Method Delete -Uri https://spirobird.onrender.com/api/results
+
+# ručni testni POST
+Invoke-RestMethod -Method Post -Uri https://spirobird.onrender.com/api/results -ContentType "application/json" -Body '{"deviceId":"test","success":true,"volumeMl":5000,"maxFlowMlS":1000,"avgFlowMlS":950,"stableTimeMs":5000,"failReason":null,"timestampMs":1}'
+```
+
+> Free tier: servis zaspi nakon ~15 min → prvi zahtjev traje 30–60 s (Controllerov
+> prvi POST tada padne na timeout 1500 ms, retry nakon 5 s prolazi). Prije demo-a
+> otvoriti dashboard da se servis probudi.
+
 ## Deploy na Render.com
 
 1. Pushati repozitorij na GitHub.
