@@ -35,7 +35,7 @@ održava stabilan protok u ciljnoj zoni. Vježba je uspješna ako protok ostane
 ┌──────────────────────────┐         ESP-NOW broadcast          ┌──────────────────────────┐
 │  CONTROLLER / MASTER     │  ──── SpiroPacket @ 30–50 Hz ────► │  DISPLAY / SLAVE         │
 │  ESP32-S3-N16R8 dev kit  │        (FF:FF:FF:FF:FF:FF)         │  ESP32-S3 ES3C28P 2.8"   │
-│  pot + buzzer + motor    │                                    │  240x320 ILI9341V        │
+│  pot + motor + RGB LED   │                                    │  240x320 ILI9341V        │
 │  logika + Wi-Fi + NVS    │                                    │  samo render igre        │
 └──────────┬───────────────┘                                    └──────────────────────────┘
            │ HTTP POST (samo nakon SUCCESS/FAIL)
@@ -44,7 +44,7 @@ održava stabilan protok u ciljnoj zoni. Vježba je uspješna ako protok ostane
 ```
 
 - **Controller (Master)** — jedini izvor istine: čita potenciometar, računa
-  protok/stabilnost/volumen, vodi state machine, upravlja buzzerom i vibracijskim
+  protok/stabilnost/volumen, vodi state machine, upravlja RGB LED-icom i vibracijskim
   motorom, sprema high score u NVS, spaja se na Wi-Fi preko captive portala
   (`SpiroBird-Setup`) i šalje rezultate na server.
 - **Display (Slave)** — samo prima ESP-NOW pakete i renderira igru. **Ne** spaja se na
@@ -118,7 +118,7 @@ Ne pretpostavljati da sve radi odjednom — strogo ovim redom
 (detalji u `docs/testing-plan.md`):
 
 1. **Controller standalone** — Serial: ADC, kalibracija, protok
-2. **Buzzer** — LEDC tonovi bez blokiranja
+2. **Buzzer** — eliminiran nakon HW testa (komponenta neispravna); statusna indikacija preuzeta onboard RGB LED-icom
 3. **Motor** — tek nakon vizualne provjere tranzistorskog spoja (`ENABLE_MOTOR 0` zadano!)
 4. **Backend** — lokalno → curl → ESP32 POST → Render
 5. **Display standalone** — fake-data mod bez ESP-NOW-a
