@@ -74,14 +74,17 @@ docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacij
 | 0 | Repozitorij + plan | ✅ |
 | 1 | Dokumentacija arhitekture (README, wiring, protocol) | ✅ |
 | 2 | Zajednički `protocol.h` | ✅ |
-| 3 | Controller firmware — jezgra (senzor, logika, haptika, NVS) | ✅ kompilira (PIO) |
-| 4 | Controller firmware — mreža (ESP-NOW, Wi-Fi portal, server POST) | ✅ kompilira (PIO, 3 kombinacije zastavica) |
-| 5 | Display firmware (receiver, render igre, UI ekrani) | ✅ kompilira (PIO) |
+| 3 | Controller firmware — jezgra (senzor, logika, haptika, NVS) | ✅ **validirano na hardveru** |
+| 4 | Controller firmware — mreža (ESP-NOW, Wi-Fi portal, server POST) | ✅ **validirano na hardveru** |
+| 5 | Display firmware (receiver, render igre, UI ekrani, touch) | ✅ **validirano na hardveru** |
 | 6 | Backend (Express + dashboard) | ✅ testirano lokalno (svi endpointi) |
 | 7 | Simulacija i testovi (`sim/`) | ✅ 23 unit testa + 5 scenarija — svi prolaze |
-| 8 | Finalna dokumentacija (testing-plan, troubleshooting, case) | ⏳ |
+| 8 | Finalna dokumentacija (testing-plan, troubleshooting, case) | 🔶 testing-plan ✅, ostalo u izradi |
 | 9 | Prezentacija (Marp → PDF, committano u repo) | ⏳ |
 | 10 | Upute za flashanje + priprema za obranu | ⏳ |
+
+> Hardverska validacija (koraci 1–7 + sleep modovi) provedena na stvarnim uređajima —
+> sirovi serijski logovi testova su u [`docs/test-logs/`](docs/test-logs/).
 
 > Projekt pošteno opisuje planiranu/implementiranu arhitekturu — stavke označene ⏳
 > još nisu testirane na hardveru.
