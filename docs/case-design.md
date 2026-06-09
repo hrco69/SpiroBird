@@ -1,6 +1,9 @@
 # SpiroBird — Dizajn 3D printanog kućišta
 
-> Status: smjernice za izradu (kućište je planirani dodatak, ne uvjet za demo).
+> ✅ **Realizirano** — kućišta su isprintana i sklopljena. As-built mjere,
+> exploded view, tehnički nacrt i fotografije: [`docs/kuciste/`](kuciste/).
+>
+> Ovaj dokument sadrži izvorne smjernice za izradu.
 
 ## Kućište Controllera (Master)
 

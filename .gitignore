@@ -27,3 +27,6 @@ desktop.ini
 
 # Server runtime data is seeded empty; local test results are not committed
 
+
+# Office temp lock files
+~$*
