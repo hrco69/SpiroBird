@@ -64,7 +64,7 @@ controller/   PlatformIO projekt — Master firmware (ESP32-S3 dev kit)
 display/      PlatformIO projekt — Slave firmware (ES3C28P display board)
 server/       Node.js/Express backend + web dashboard (Render-kompatibilan)
 sim/          Python simulacija i testovi logike (prije flashanja)
-docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacija
+docs/         Dokumentacija: plan, ožičenje, protokol, testiranje, prezentacija, kućište
 ```
 
 ## Status implementacije
